@@ -21,6 +21,10 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
     public DrawPanel() {
         this.addMouseListener(this);
         this.addKeyListener(this);
+
+        Obstacles wow = new Obstacles();
+
+        playField = wow.exportField();
     }
 
 
@@ -44,6 +48,12 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
 
                     }
                     else if (playField[r][c] == 3) {
+
+                    }
+                    else if (playField[r][c] == 4) {
+
+                    }
+                    else if (playField[r][c] == 5) {
 
                     }
                     y += 30;

@@ -9,22 +9,46 @@ public class Obstacles {
 
     Obstacles(){
         layout = new int[30][40];
-        layout[29][20] = PLAYER;
+        initialField();
     }
 
-    public void fillPlay(){
-
-
+    public void initialField(){
+        layout[29][20] = PLAYER;
 
 
     }
     public void generateMore(){
 
-
-
-
     }
     public int[][] exportField(){
-        return layout; 
+        return layout;
     }
+
+    public boolean hasRoad(int row, int col){
+        if(col == 0){
+            if(layout[row+1][col] == ROAD)  {
+                return true;
+            }
+            else{
+                return false;
+            }
+        }
+        else if(col == 29){
+            if (layout[row+1][col] == ROAD){
+                return true;
+            }
+            else{
+                return false;
+            }
+        }
+        else{
+            if((layout[row+1][col] == ROAD) || (layout[row][col+1] == ROAD) || (layout[row][col-1] == ROAD)){
+                return true;
+            }
+            else{
+                return false;
+            }
+        }
+    }
+
 }
