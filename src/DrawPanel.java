@@ -83,6 +83,8 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
 
     }
 
+
+    //CHECKS FOR WHAT KEY IS PRESSED TO MOVE
     public void keyPressed(KeyEvent e) {
         int keyCode = e.getKeyCode();
         if (keyCode == KeyEvent.VK_W) {
@@ -97,6 +99,7 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
         }
     }
 
+    //SETS BACK TO FALSE AFTER RELEASE
     public void keyReleased(KeyEvent e) {
         int keyCode = e.getKeyCode();
         if (keyCode == KeyEvent.VK_W) {
