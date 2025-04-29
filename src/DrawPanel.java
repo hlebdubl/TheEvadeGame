@@ -42,19 +42,29 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
                     g.drawRect(x, y, 30, 30);
 
                     if (playField[r][c] == 1) {
-
+                        g2.setColor(Color.GREEN);
+                        g2.fillRect(x, y, 30, 30);
+                        g2.setColor(Color.BLACK);
                     }
                     else if (playField[r][c] == 2) {
-
+                        g2.setColor(Color.GRAY);
+                        g2.fillRect(x, y, 30, 30);
+                        g2.setColor(Color.BLACK);
                     }
                     else if (playField[r][c] == 3) {
-
+                        g2.setColor(Color.RED);
+                        g2.fillRect(x, y, 30, 30);
+                        g2.setColor(Color.BLACK);
                     }
                     else if (playField[r][c] == 4) {
-
+                        g2.setColor(Color.orange);
+                        g2.fillRect(x, y, 30, 30);
+                        g2.setColor(Color.BLACK);
                     }
                     else if (playField[r][c] == 5) {
-
+                        g2.setColor(Color.BLACK);
+                        g2.fillRect(x, y, 30, 30);
+                        g2.setColor(Color.BLACK);
                     }
                     y += 30;
                 }
@@ -80,20 +90,15 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
     public void mouseExited(MouseEvent e) {
     }
     public void keyTyped(KeyEvent e) {
-
     }
-
 
     //CHECKS FOR WHAT KEY IS PRESSED TO MOVE
     public void keyPressed(KeyEvent e) {
         int keyCode = e.getKeyCode();
         if (keyCode == KeyEvent.VK_W) {
             wPressed = true;
-
         } else if (keyCode == KeyEvent.VK_A) {
             aPressed = true;
-        } else if (keyCode == KeyEvent.VK_S) {
-            sPressed = true;
         } else if (keyCode == KeyEvent.VK_D) {
             dPressed = true;
         }
@@ -106,8 +111,6 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
             wPressed = false;
         } else if (keyCode == KeyEvent.VK_A) {
             aPressed = false;
-        } else if (keyCode == KeyEvent.VK_S) {
-            sPressed = false;
         } else if (keyCode == KeyEvent.VK_D) {
             dPressed = false;
         }

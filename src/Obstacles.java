@@ -6,58 +6,104 @@ public class Obstacles {
     private final int OBSTACLETHREE = 3;
     private final int ROAD = 4;
     private final int PLAYER = 5;
+    private int playerRow = 29;
+    private int playerCol = 20;
 
-    Obstacles(){
+
+    Obstacles() {
         layout = new int[30][40];
         initialField();
     }
 
     //CREATES THE FIRST ITERATION OF THE FIELD
-    public void initialField(){
-        layout[29][20] = PLAYER;
-
-
+    public void initialField() {
+        for (int row = 29; row >= 0; row--) {
+            for (int col = 39; col >= 0; col--) {
+                int nextBlock = (int) (Math.random() * 4) + 1;
+                if (!hasRoad(row, col)) {
+                    nextBlock = 4;
+                }
+                if (row == 29 && col == 20) {
+                    layout[row][col] = PLAYER;
+                } else if (nextBlock == 1) {
+                    layout[row][col] = OBSTACLEONE;
+                } else if (nextBlock == 2) {
+                    layout[row][col] = OBSTACLETWO;
+                } else if (nextBlock == 3) {
+                    layout[row][col] = OBSTACLETHREE;
+                } else if (nextBlock == 4) {
+                    layout[row][col] = ROAD;
+                }
+            }
+        }
     }
 
     //ONCE PLAYER MOVES UP, A NEW LAYER IS GENERATED AND THE OLD ONE IS DELETED
-    public void generateMore(){
-
-
-
-
+    public void generateMore() {
+        if (playerRow != 29) {
+            for (int row = 29; row > 0; row--) {
+                System.arraycopy(layout[row - 1], 0, layout[row], 0, 40);
+            }
+            for (int col = 39; col >= 0; col--) {
+                int nextBlock = (int) (Math.random() * 4) + 1;
+                if (nextBlock == 1) {
+                    layout[0][col] = OBSTACLEONE;
+                } else if (nextBlock == 2) {
+                    layout[0][col] = OBSTACLETWO;
+                } else if (nextBlock == 3) {
+                    layout[0][col] = OBSTACLETHREE;
+                } else if (nextBlock == 4) {
+                    layout[0][col] = ROAD;
+                }
+            }
+        }
     }
+
     //GETTERS
-    public int[][] exportField(){
+    public int[][] exportField() {
         return layout;
     }
 
+
     //USED FOR GENERATING THE FIELD, CHECKS FOR ROAD NEAR ALREADY EXISTING ROAD
     //TO MAKE SURE THERE IS A CONTINUOUS PATH
-    public boolean hasRoad(int row, int col){
-        if(col == 0){
-            if(layout[row+1][col] == ROAD)  {
-                return true;
-            }
-            else{
-                return false;
-            }
-        }
-        else if(col == 29){
-            if (layout[row+1][col] == ROAD){
-                return true;
-            }
-            else{
-                return false;
-            }
+    public boolean hasRoad(int row, int col) {
+        if (col == 0 || col == 39) {
+            return true;
         }
         else{
-            if((layout[row+1][col] == ROAD) || (layout[row][col+1] == ROAD) || (layout[row][col-1] == ROAD)){
-                return true;
-            }
-            else{
-                return false;
-            }
+            return roadAdjacent(row, col);
         }
     }
 
+    public boolean roadAdjacent(int row, int col) {
+        if(row == 0){
+            if (layout[row][col + 1] == ROAD) {
+                return true;
+            }
+            if (layout[row][col - 1] == ROAD) {
+                return true;
+            }
+            if (layout[row + 1][col] == ROAD) {
+                return true;
+            }
+        }
+        else{
+            if (layout[row][col + 1] == ROAD) {
+                return true;
+            }
+            if (layout[row][col - 1] == ROAD) {
+                return true;
+            }
+            if(row == 29){
+                return false;
+            }
+            else if (layout[row + 1][col] == ROAD) {
+                return true;
+            }
+        }
+
+        return false;
+    }
 }
+
