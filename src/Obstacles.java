@@ -20,7 +20,7 @@ public class Obstacles {
         for (int row = 29; row >= 0; row--) {
             for (int col = 39; col >= 0; col--) {
                 int nextBlock = (int) (Math.random() * 4) + 1;
-                if (!hasRoad(row, col)) {
+                if (!hasRoad(row, col) && nextBlock != 4) {
                     nextBlock = 4;
                 }
                 if (row == 29 && col == 20) {
@@ -40,7 +40,7 @@ public class Obstacles {
 
     //ONCE PLAYER MOVES UP, A NEW LAYER IS GENERATED AND THE OLD ONE IS DELETED
     public void generateMore() {
-        if (playerRow != 29) {
+        if (playerRow != 15) {
             for (int row = 29; row > 0; row--) {
                 System.arraycopy(layout[row - 1], 0, layout[row], 0, 40);
             }
@@ -77,33 +77,40 @@ public class Obstacles {
     }
 
     public boolean roadAdjacent(int row, int col) {
+        int moreThanOne = 0;
+
         if(row == 0){
             if (layout[row][col + 1] == ROAD) {
-                return true;
+                moreThanOne ++;
             }
             if (layout[row][col - 1] == ROAD) {
-                return true;
+                moreThanOne ++;
             }
             if (layout[row + 1][col] == ROAD) {
-                return true;
+                moreThanOne ++;
             }
+            return moreThanOne >= 2;
         }
         else{
-            if (layout[row][col + 1] == ROAD) {
-                return true;
-            }
             if (layout[row][col - 1] == ROAD) {
-                return true;
+                moreThanOne ++;
+            }
+            if (layout[row][col + 1] == ROAD) {
+                moreThanOne ++;
             }
             if(row == 29){
-                return false;
+                if (layout[row - 1][col] == ROAD) {
+                    moreThanOne ++;
+                }
             }
             else if (layout[row + 1][col] == ROAD) {
-                return true;
+                moreThanOne ++;
             }
-        }
 
-        return false;
+        }
+        return moreThanOne >= 2;
     }
+
+
 }
 

@@ -9,13 +9,9 @@ import java.util.ArrayList;
 
 public class DrawPanel extends JPanel implements MouseListener, KeyListener {
 
-    private boolean wPressed = false;
-    private boolean aPressed = false;
-    private boolean sPressed = false;
-    private boolean dPressed = false;
     private boolean onStartScreen = true;
     private int[][] playField;
-    private long startTime = System.currentTimeMillis();
+    private Player play;
 
 
     public DrawPanel() {
@@ -25,6 +21,8 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
         Obstacles wow = new Obstacles();
 
         playField = wow.exportField();
+
+        play = new Player("jk4jgojergojo");
     }
 
 
@@ -37,7 +35,7 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
 
         Graphics2D g2 = (Graphics2D)g;
 
-            for (int c = 0; c < 40; c++) {
+        for (int c = 0; c < 40; c++) {
                 for (int r = 0; r < 30; r++) {
                     g.drawRect(x, y, 30, 30);
 
@@ -79,7 +77,7 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
 
 
         }
-
+        System.out.println("EJFNEJWO");
     }
     public void mousePressed(MouseEvent e) {
     }
@@ -94,25 +92,32 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
 
     //CHECKS FOR WHAT KEY IS PRESSED TO MOVE
     public void keyPressed(KeyEvent e) {
+        System.out.println("EJFNEJWO");
+
         int keyCode = e.getKeyCode();
         if (keyCode == KeyEvent.VK_W) {
-            wPressed = true;
+            //moveup
         } else if (keyCode == KeyEvent.VK_A) {
-            aPressed = true;
+            //moveleft
         } else if (keyCode == KeyEvent.VK_D) {
-            dPressed = true;
+            //moverigth
+        }
+        else if (keyCode == KeyEvent.VK_S) {
+            //moveedown
         }
     }
 
     //SETS BACK TO FALSE AFTER RELEASE
     public void keyReleased(KeyEvent e) {
-        int keyCode = e.getKeyCode();
-        if (keyCode == KeyEvent.VK_W) {
-            wPressed = false;
-        } else if (keyCode == KeyEvent.VK_A) {
-            aPressed = false;
-        } else if (keyCode == KeyEvent.VK_D) {
-            dPressed = false;
-        }
+//        System.out.println("EJFNEJWO");
+//
+//        int keyCode = e.getKeyCode();
+//        if (keyCode == KeyEvent.VK_W) {
+//            wPressed = false;
+//        } else if (keyCode == KeyEvent.VK_A) {
+//            aPressed = false;
+//        } else if (keyCode == KeyEvent.VK_D) {
+//            dPressed = false;
+//        }
     }
 }
