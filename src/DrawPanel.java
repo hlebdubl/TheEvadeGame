@@ -12,6 +12,8 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
     private boolean onStartScreen = true;
     private int[][] playField;
     private Player play;
+    int score;
+    String name;
 
 
     public DrawPanel() {
@@ -23,6 +25,8 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
         playField = wow.exportField();
 
         play = new Player("jk4jgojergojo");
+        score = play.getScore();
+        name = play.getName();
     }
 
 
@@ -97,13 +101,24 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
         int keyCode = e.getKeyCode();
         if (keyCode == KeyEvent.VK_W) {
             //moveup
+            score += 15;
+            play.addScore(15);
+            play.compareScore();
         } else if (keyCode == KeyEvent.VK_A) {
             //moveleft
+            score += 5;
+            play.addScore(5);
+            play.compareScore();
         } else if (keyCode == KeyEvent.VK_D) {
             //moverigth
+            score += 5;
+            play.addScore(5);
+            play.compareScore();
         }
         else if (keyCode == KeyEvent.VK_S) {
             //moveedown
+            score -= 20;
+            play.addScore(-20);
         }
     }
 
