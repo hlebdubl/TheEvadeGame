@@ -12,6 +12,7 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
     private boolean onStartScreen = true;
     private int[][] playField;
     private Player play;
+    private Obstacles obstacle;
     int score;
     String name;
 
@@ -20,9 +21,9 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
         this.addMouseListener(this);
         this.addKeyListener(this);
 
-        Obstacles wow = new Obstacles();
+        obstacle = new Obstacles();
 
-        playField = wow.exportField();
+        playField = obstacle.exportField();
 
         play = new Player("jk4jgojergojo");
         score = play.getScore();
@@ -75,10 +76,8 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
         }
     }
 
-
     public void mouseClicked(MouseEvent e) {
         if(onStartScreen){
-
 
         }
         System.out.println("EJFNEJWO");
@@ -99,26 +98,44 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
         System.out.println("EJFNEJWO");
 
         int keyCode = e.getKeyCode();
-        if (keyCode == KeyEvent.VK_W) {
+        if(keyCode == KeyEvent.VK_W) {
             //moveup
             score += 15;
             play.addScore(15);
             play.compareScore();
-        } else if (keyCode == KeyEvent.VK_A) {
+            obstacle.setPlayerRow(obstacle.getPlayerRow() - 1);
+
+            if(obstacle.getPlayerRow() == 20){
+                //play.generateMore();
+                System.out.println("WOWOOW");
+            }
+        }
+        else if (keyCode == KeyEvent.VK_A) {
             //moveleft
-            score += 5;
-            play.addScore(5);
-            play.compareScore();
-        } else if (keyCode == KeyEvent.VK_D) {
+            if(obstacle.getPlayerRow() != 0){
+                score += 5;
+                play.addScore(5);
+                play.compareScore();
+                obstacle.setPlayerCol(obstacle.getPlayerCol() - 1);
+            }
+        }
+        else if (keyCode == KeyEvent.VK_D) {
             //moverigth
-            score += 5;
-            play.addScore(5);
-            play.compareScore();
+            if(obstacle.getPlayerCol() != 39){
+                score += 5;
+                play.addScore(5);
+                play.compareScore();
+                obstacle.setPlayerCol(obstacle.getPlayerCol() + 1);
+
+            }
         }
         else if (keyCode == KeyEvent.VK_S) {
             //moveedown
-            score -= 20;
-            play.addScore(-20);
+            if(obstacle.getPlayerRow() != 29){
+                score -= 20;
+                play.addScore(-20);
+                obstacle.setPlayerRow(obstacle.getPlayerRow() + 1);
+            }
         }
     }
 

@@ -9,7 +9,7 @@ public class Obstacles {
     private int playerRow = 29;
     private int playerCol = 20;
 
-
+    //Constructor, sets up a new field when created
     Obstacles() {
         layout = new int[30][40];
         initialField();
@@ -39,8 +39,10 @@ public class Obstacles {
     }
 
     //ONCE PLAYER MOVES UP, A NEW LAYER IS GENERATED AND THE OLD ONE IS DELETED
+
+    //lowkey gotta look into if the parameters still match the current situation
     public void generateMore() {
-        if (playerRow != 15) {
+        if (playerRow != 20) {
             for (int row = 29; row > 0; row--) {
                 System.arraycopy(layout[row - 1], 0, layout[row], 0, 40);
             }
@@ -59,11 +61,22 @@ public class Obstacles {
         }
     }
 
-    //GETTERS
+    //GETTERS AND SETTERS
     public int[][] exportField() {
         return layout;
     }
-
+    public int getPlayerRow() {
+        return playerRow;
+    }
+    public void setPlayerRow(int playerRow) {
+        this.playerRow = playerRow;
+    }
+    public int getPlayerCol() {
+        return playerCol;
+    }
+    public void setPlayerCol(int playerCol) {
+        this.playerCol = playerCol;
+    }
 
     //USED FOR GENERATING THE FIELD, CHECKS FOR ROAD NEAR ALREADY EXISTING ROAD
     //TO MAKE SURE THERE IS A CONTINUOUS PATH
@@ -76,6 +89,7 @@ public class Obstacles {
         }
     }
 
+    //HELPED METHOD FOR hasRoad() TO CHECK ADJACENT SPOTS
     public boolean roadAdjacent(int row, int col) {
         int moreThanOne = 0;
 
@@ -110,7 +124,5 @@ public class Obstacles {
         }
         return moreThanOne >= 2;
     }
-
-
 }
 

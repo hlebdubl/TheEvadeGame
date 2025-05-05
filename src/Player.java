@@ -3,7 +3,7 @@ public class Player {
     private int score;
     private static int bestScore;
 
-
+    //Constructor, sets up a basic player with name and 0 score once created
     Player(String name){
         this.name = name;
         score = 0;
