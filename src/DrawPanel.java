@@ -138,18 +138,6 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
             }
         }
     }
-
-    //SETS BACK TO FALSE AFTER RELEASE
     public void keyReleased(KeyEvent e) {
-//        System.out.println("EJFNEJWO");
-//
-//        int keyCode = e.getKeyCode();
-//        if (keyCode == KeyEvent.VK_W) {
-//            wPressed = false;
-//        } else if (keyCode == KeyEvent.VK_A) {
-//            aPressed = false;
-//        } else if (keyCode == KeyEvent.VK_D) {
-//            dPressed = false;
-//        }
     }
 }
