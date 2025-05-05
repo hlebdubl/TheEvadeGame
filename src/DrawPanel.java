@@ -80,7 +80,6 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
         if(onStartScreen){
 
         }
-        System.out.println("EJFNEJWO");
     }
     public void mousePressed(MouseEvent e) {
     }
@@ -106,7 +105,7 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
             obstacle.setPlayerRow(obstacle.getPlayerRow() - 1);
 
             if(obstacle.getPlayerRow() == 20){
-                //play.generateMore();
+                obstacle.generateMore();
                 System.out.println("WOWOOW");
             }
         }
