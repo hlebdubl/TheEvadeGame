@@ -42,12 +42,15 @@ public class Obstacles {
 
     //lowkey gotta look into if the parameters still match the current situation
     public void generateMore() {
-        if (playerRow != 20) {
+        if (playerRow <= 20) {
             for (int row = 29; row > 0; row--) {
                 System.arraycopy(layout[row - 1], 0, layout[row], 0, 40);
             }
             for (int col = 39; col >= 0; col--) {
                 int nextBlock = (int) (Math.random() * 4) + 1;
+                if (!hasRoad(0, col) && nextBlock != 4) {
+                    nextBlock = 4;
+                }
                 if (nextBlock == 1) {
                     layout[0][col] = OBSTACLEONE;
                 } else if (nextBlock == 2) {
