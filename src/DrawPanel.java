@@ -20,6 +20,7 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
     public DrawPanel() {
         this.addMouseListener(this);
         this.addKeyListener(this);
+        setFocusable(true);
 
         obstacle = new Obstacles();
 
@@ -131,8 +132,7 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
             }
         }
         else if (keyCode == KeyEvent.VK_S) {
-            //moveedown
-            if(obstacle.getPlayerRow() != 29 && playField[obstacle.getPlayerRow()][obstacle.getPlayerCol() + 1] == 4){
+            if(obstacle.getPlayerRow() != 30 && playField[obstacle.getPlayerRow()][obstacle.getPlayerCol() + 1] == 4){
                 score -= 20;
                 play.addScore(-20);
 
