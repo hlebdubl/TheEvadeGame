@@ -61,6 +61,7 @@ public class Obstacles {
                     layout[0][col] = ROAD;
                 }
             }
+            playerRow ++;
         }
     }
 
