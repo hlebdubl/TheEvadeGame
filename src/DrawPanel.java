@@ -98,45 +98,54 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
 
         int keyCode = e.getKeyCode();
         if(keyCode == KeyEvent.VK_W) {
-            //moveup
-            score += 15;
-            play.addScore(15);
-            play.compareScore();
-            obstacle.setPlayerRow(obstacle.getPlayerRow() - 1);
+            if(playField[obstacle.getPlayerRow() - 1 ][obstacle.getPlayerCol()] == 4){
+                score += 15;
+                play.addScore(15);
+                play.compareScore();
 
-            if(obstacle.getPlayerRow() == 20){
-                obstacle.generateMore();
-                System.out.println("WOWOOW");
+                playField[obstacle.getPlayerRow() - 1][obstacle.getPlayerCol()] = 5;
+                playField[obstacle.getPlayerRow()][obstacle.getPlayerCol()] = 4;
+                obstacle.setPlayerRow(obstacle.getPlayerRow() - 1);
             }
         }
         else if (keyCode == KeyEvent.VK_A) {
-            //moveleft
-            if(obstacle.getPlayerRow() != 0){
+            if(obstacle.getPlayerRow() != 0 && playField[obstacle.getPlayerRow()][obstacle.getPlayerCol() - 1] == 4){
                 score += 5;
                 play.addScore(5);
                 play.compareScore();
+
+                playField[obstacle.getPlayerRow()][obstacle.getPlayerCol() - 1] = 5;
+                playField[obstacle.getPlayerRow()][obstacle.getPlayerCol()] = 4;
                 obstacle.setPlayerCol(obstacle.getPlayerCol() - 1);
             }
         }
         else if (keyCode == KeyEvent.VK_D) {
-            //moverigth
-            if(obstacle.getPlayerCol() != 39){
+            if(obstacle.getPlayerCol() != 39 && playField[obstacle.getPlayerRow()][obstacle.getPlayerCol() + 1] ==  4){
                 score += 5;
                 play.addScore(5);
                 play.compareScore();
-                obstacle.setPlayerCol(obstacle.getPlayerCol() + 1);
 
+                playField[obstacle.getPlayerRow()][obstacle.getPlayerCol() + 1] = 5;
+                playField[obstacle.getPlayerRow()][obstacle.getPlayerCol()] = 4;
+                obstacle.setPlayerCol(obstacle.getPlayerCol() + 1);
             }
         }
         else if (keyCode == KeyEvent.VK_S) {
             //moveedown
-            if(obstacle.getPlayerRow() != 29){
+            if(obstacle.getPlayerRow() != 29 && playField[obstacle.getPlayerRow()][obstacle.getPlayerCol() + 1] == 4){
                 score -= 20;
                 play.addScore(-20);
+
+                playField[obstacle.getPlayerRow() + 1][obstacle.getPlayerCol()] = 5;
+                playField[obstacle.getPlayerRow()][obstacle.getPlayerCol()] = 4;
                 obstacle.setPlayerRow(obstacle.getPlayerRow() + 1);
             }
         }
+        if(obstacle.getPlayerRow() == 20){
+            obstacle.generateMore();
+        }
     }
+
     public void keyReleased(KeyEvent e) {
     }
 }
