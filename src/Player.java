@@ -27,6 +27,9 @@ public class Player {
     public String getName(){
         return name;
     }
+    public int getBest(){
+        return bestScore;
+    }
 
 }
 
