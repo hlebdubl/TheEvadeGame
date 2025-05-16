@@ -26,7 +26,7 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
 
         playField = obstacle.exportField();
 
-        play = new Player("jk4jgojergojo");
+        play = new Player("Player");
         score = play.getScore();
         name = play.getName();
     }
@@ -147,14 +147,14 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
             }
         }
         else if (keyCode == KeyEvent.VK_E) {
-            if(playField[obstacle.getPlayerRow()][obstacle.getPlayerCol() - 2] == 4){
+            if(obstacle.getPlayerCol() <= 1 && playField[obstacle.getPlayerRow()][obstacle.getPlayerCol() - 2] == 4){
                 playField[obstacle.getPlayerRow()][obstacle.getPlayerCol() - 2] = 5;
                 playField[obstacle.getPlayerRow()][obstacle.getPlayerCol()] = 4;
                 obstacle.setPlayerCol(obstacle.getPlayerCol() - 2);
             }
         }
         else if (keyCode == KeyEvent.VK_Z) {
-            if(playField[obstacle.getPlayerRow()][obstacle.getPlayerCol() + 2] == 4){
+            if(obstacle.getPlayerCol() >= 38 && playField[obstacle.getPlayerRow()][obstacle.getPlayerCol() + 2] == 4){
                 playField[obstacle.getPlayerRow()][obstacle.getPlayerCol() + 2] = 5;
                 playField[obstacle.getPlayerRow()][obstacle.getPlayerCol()] = 4;
                 obstacle.setPlayerCol(obstacle.getPlayerCol() + 2);
