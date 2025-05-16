@@ -95,8 +95,6 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
 
     //CHECKS FOR WHAT KEY IS PRESSED TO MOVE
     public void keyPressed(KeyEvent e) {
-        System.out.println("EJFNEJWO");
-
         int keyCode = e.getKeyCode();
         if(keyCode == KeyEvent.VK_W) {
             if(playField[obstacle.getPlayerRow() - 1 ][obstacle.getPlayerCol()] == 4){
