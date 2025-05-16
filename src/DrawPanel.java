@@ -141,7 +141,32 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
                 obstacle.setPlayerRow(obstacle.getPlayerRow() + 1);
             }
         }
+        else if (keyCode == KeyEvent.VK_Q) {
+            if(playField[obstacle.getPlayerRow() - 2][obstacle.getPlayerCol()] == 4){
+               playField[obstacle.getPlayerRow() - 2][obstacle.getPlayerCol()] = 5;
+               playField[obstacle.getPlayerRow()][obstacle.getPlayerCol()] = 4;
+               obstacle.setPlayerRow(obstacle.getPlayerRow() - 2);
+            }
+        }
+        else if (keyCode == KeyEvent.VK_E) {
+            if(playField[obstacle.getPlayerRow()][obstacle.getPlayerCol() - 2] == 4){
+                playField[obstacle.getPlayerRow()][obstacle.getPlayerCol() - 2] = 5;
+                playField[obstacle.getPlayerRow()][obstacle.getPlayerCol()] = 4;
+                obstacle.setPlayerCol(obstacle.getPlayerCol() - 2);
+            }
+        }
+        else if (keyCode == KeyEvent.VK_Z) {
+            if(playField[obstacle.getPlayerRow()][obstacle.getPlayerCol() + 2] == 4){
+                playField[obstacle.getPlayerRow()][obstacle.getPlayerCol() + 2] = 5;
+                playField[obstacle.getPlayerRow()][obstacle.getPlayerCol()] = 4;
+                obstacle.setPlayerCol(obstacle.getPlayerCol() + 2);
+            }
+        }
         if(obstacle.getPlayerRow() == 20){
+            obstacle.generateMore();
+        }
+        else if(obstacle.getPlayerRow() == 19){
+            obstacle.generateMore();
             obstacle.generateMore();
         }
     }
