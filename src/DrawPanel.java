@@ -116,6 +116,8 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
     public void keyPressed(KeyEvent e) {
 
         int keyCode = e.getKeyCode();
+
+        //go up
         if(keyCode == KeyEvent.VK_W) {
             if(playField[obstacle.getPlayerRow() - 1 ][obstacle.getPlayerCol()] == 4){
                 score += 15;
@@ -128,6 +130,8 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
                 obstacle.setPlayerRow(obstacle.getPlayerRow() - 1);
             }
         }
+
+        //go left
         else if (keyCode == KeyEvent.VK_A) {
             if(obstacle.getPlayerCol() != 0 && playField[obstacle.getPlayerRow()][obstacle.getPlayerCol() - 1] == 4){
 
@@ -136,6 +140,8 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
                 obstacle.setPlayerCol(obstacle.getPlayerCol() - 1);
             }
         }
+
+        //go right
         else if (keyCode == KeyEvent.VK_D) {
             if(obstacle.getPlayerCol() != 39 && playField[obstacle.getPlayerRow()][obstacle.getPlayerCol() + 1] ==  4){
 
@@ -144,6 +150,8 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
                 obstacle.setPlayerCol(obstacle.getPlayerCol() + 1);
             }
         }
+
+        //go down
         else if (keyCode == KeyEvent.VK_S) {
             if(obstacle.getPlayerRow() != 29 && playField[obstacle.getPlayerRow() + 1][obstacle.getPlayerCol()] == 4){
                 score -= 25;
@@ -156,6 +164,8 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
                 obstacle.setPlayerRow(obstacle.getPlayerRow() + 1);
             }
         }
+
+        //dash up
         else if (keyCode == KeyEvent.VK_Q) {
             if(playField[obstacle.getPlayerRow() - 2][obstacle.getPlayerCol()] == 4){
                playField[obstacle.getPlayerRow() - 2][obstacle.getPlayerCol()] = 5;
@@ -168,6 +178,8 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
 
             }
         }
+
+        //dash left
         else if (keyCode == KeyEvent.VK_E) {
             if(obstacle.getPlayerCol() > 1 && playField[obstacle.getPlayerRow()][obstacle.getPlayerCol() - 2] == 4){
                 playField[obstacle.getPlayerRow()][obstacle.getPlayerCol() - 2] = 5;
@@ -179,6 +191,8 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
                 play.compareScore();
             }
         }
+
+        //dash right
         else if (keyCode == KeyEvent.VK_Z) {
             if(obstacle.getPlayerCol() < 38 && playField[obstacle.getPlayerRow()][obstacle.getPlayerCol() + 2] == 4){
                 playField[obstacle.getPlayerRow()][obstacle.getPlayerCol() + 2] = 5;
@@ -190,14 +204,19 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
                 play.compareScore();
             }
         }
+
+        //generates new lines once the player steps on row 20
         if(obstacle.getPlayerRow() == 20){
             obstacle.generateMore();
         }
+
+        //in case dash happens on row 19
+        //and two extra rows need to be generated
         else if(obstacle.getPlayerRow() == 19){
             obstacle.generateMore();
             obstacle.generateMore();
         }
-
+        //Ensuring score stays at 0 or above
         if(score < 0){
             score = 0;
             play.nullScore();

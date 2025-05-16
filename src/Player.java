@@ -30,6 +30,8 @@ public class Player {
     public int getBest(){
         return bestScore;
     }
+
+    //Ensures score can't go negative
     public void nullScore(){
         score = 0;
     }
