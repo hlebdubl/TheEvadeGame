@@ -198,6 +198,11 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
             obstacle.generateMore();
         }
 
+        if(score < 0){
+            score = 0;
+            play.nullScore();
+        }
+
     }
 
     public void keyReleased(KeyEvent e) {

@@ -30,6 +30,9 @@ public class Player {
     public int getBest(){
         return bestScore;
     }
+    public void nullScore(){
+        score = 0;
+    }
 
 }
 
