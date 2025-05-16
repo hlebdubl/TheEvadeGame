@@ -10,13 +10,13 @@ public class Player {
         bestScore = 0;
     }
 
-    //ADDS SCORE PER A BLOC CROSSED
+    //ADDS SCORE
     public void addScore(int add){
         score += add;
     }
     //SET A NEW HIGH SCORE IF NEEDED
     public void compareScore(){
-        if(getScore() > bestScore){
+        if(score > bestScore){
             bestScore = score;
         }
     }

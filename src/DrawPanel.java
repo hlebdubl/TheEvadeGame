@@ -114,11 +114,13 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
 
     //CHECKS FOR WHAT KEY IS PRESSED TO MOVE
     public void keyPressed(KeyEvent e) {
+
         int keyCode = e.getKeyCode();
         if(keyCode == KeyEvent.VK_W) {
             if(playField[obstacle.getPlayerRow() - 1 ][obstacle.getPlayerCol()] == 4){
                 score += 15;
                 play.addScore(15);
+
                 play.compareScore();
 
                 playField[obstacle.getPlayerRow() - 1][obstacle.getPlayerCol()] = 5;
@@ -128,7 +130,6 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
         }
         else if (keyCode == KeyEvent.VK_A) {
             if(obstacle.getPlayerCol() != 0 && playField[obstacle.getPlayerRow()][obstacle.getPlayerCol() - 1] == 4){
-                play.compareScore();
 
                 playField[obstacle.getPlayerRow()][obstacle.getPlayerCol() - 1] = 5;
                 playField[obstacle.getPlayerRow()][obstacle.getPlayerCol()] = 4;
@@ -137,7 +138,6 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
         }
         else if (keyCode == KeyEvent.VK_D) {
             if(obstacle.getPlayerCol() != 39 && playField[obstacle.getPlayerRow()][obstacle.getPlayerCol() + 1] ==  4){
-                play.compareScore();
 
                 playField[obstacle.getPlayerRow()][obstacle.getPlayerCol() + 1] = 5;
                 playField[obstacle.getPlayerRow()][obstacle.getPlayerCol()] = 4;
@@ -147,7 +147,9 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
         else if (keyCode == KeyEvent.VK_S) {
             if(obstacle.getPlayerRow() != 29 && playField[obstacle.getPlayerRow() + 1][obstacle.getPlayerCol()] == 4){
                 score -= 25;
-                play.addScore(-20);
+                play.addScore(-25);
+
+                play.compareScore();
 
                 playField[obstacle.getPlayerRow() + 1][obstacle.getPlayerCol()] = 5;
                 playField[obstacle.getPlayerRow()][obstacle.getPlayerCol()] = 4;
@@ -162,6 +164,8 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
                play.addScore(-20);
                score -= 20;
 
+                play.compareScore();
+
             }
         }
         else if (keyCode == KeyEvent.VK_E) {
@@ -171,6 +175,8 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
                 obstacle.setPlayerCol(obstacle.getPlayerCol() - 2);
                 play.addScore(-10);
                 score -= 10;
+
+                play.compareScore();
             }
         }
         else if (keyCode == KeyEvent.VK_Z) {
@@ -180,6 +186,8 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
                 obstacle.setPlayerCol(obstacle.getPlayerCol() + 2);
                 play.addScore(-10);
                 score -= 10;
+
+                play.compareScore();
             }
         }
         if(obstacle.getPlayerRow() == 20){
@@ -189,6 +197,7 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
             obstacle.generateMore();
             obstacle.generateMore();
         }
+
     }
 
     public void keyReleased(KeyEvent e) {
