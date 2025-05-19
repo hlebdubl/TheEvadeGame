@@ -141,10 +141,14 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
             g.drawRect(850,425,200,75);
             g.fillRect(850,425,200,75);
 
+            g.drawRect(850,515,200,75);
+            g.fillRect(850,515,200,75);
+
 
             g.setColor(Color.BLACK);
             g.drawString("PLAY", 905,360);
             g.drawString("TIPS", 910,475);
+            g.drawString("CREDITS",875,565);
 
 
         }
@@ -153,7 +157,10 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
 
     public void mouseClicked(MouseEvent e) {
         if(onStartScreen){
+            //clicked start, start game
 
+
+           //clicked tips, open tips menu
         }
     }
     public void mousePressed(MouseEvent e) {
