@@ -137,8 +137,14 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
             g.setColor(Color.GREEN);
             g.drawRect(850,300,200,100);
             g.fillRect(850,300,200,100);
+
+            g.drawRect(850,425,200,75);
+            g.fillRect(850,425,200,75);
+
+
             g.setColor(Color.BLACK);
             g.drawString("PLAY", 905,360);
+            g.drawString("TIPS", 910,475);
 
 
         }
