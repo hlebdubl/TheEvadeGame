@@ -157,10 +157,22 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
 
     public void mouseClicked(MouseEvent e) {
         if(onStartScreen){
-            //clicked start, start game
+           //placeholders
 
 
+            if(contains(100,100)){
+
+            }
+            //click play, play the game
+            else if(contains(50,50)){
+
+            }
            //clicked tips, open tips menu
+
+            else if(contains(0,0)){
+
+            }
+           //clicked credits, see something idk
         }
     }
     public void mousePressed(MouseEvent e) {
