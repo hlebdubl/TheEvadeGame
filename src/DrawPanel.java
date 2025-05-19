@@ -35,60 +35,63 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
 
     protected void paintComponent(Graphics g) {
 
-        super.paintComponent(g);
+        if(!onStartScreen){
+            Font currentFont = g.getFont();
+            Font biggerFont = currentFont.deriveFont(currentFont.getSize() * 2f);
+            g.setFont(biggerFont);
 
-        int x = 55;
-        int y = 1;
+            super.paintComponent(g);
 
-        Graphics2D g2 = (Graphics2D)g;
+            int x = 55;
+            int y = 1;
 
-        Font currentFont = g.getFont();
-        Font biggerFont = currentFont.deriveFont(currentFont.getSize() * 2f);
-        g.setFont(biggerFont);
-
-        //Stores movement Strings
-        String[] moves = {"W: Up", "S: Down", "A: Left", "D: Right", "Q: Dash Up", "E: Dash Left", "Z: Dash Right"};
-
-        int xm = 60;
-        int ym = 925;
+            Graphics2D g2 = (Graphics2D)g;
 
 
-        //Prints out all the movement Strings
-        for(int i = 0; i < moves.length; i ++){
-            g.drawRect(55,700,460,285);
 
-            g.drawString(moves[i],xm,ym);
+            //Stores movement Strings
+            String[] moves = {"W: Up", "S: Down", "A: Left", "D: Right", "Q: Dash Up", "E: Dash Left", "Z: Dash Right"};
 
-            if(i == 0 || i == 1 || i == 2 || i == 3){
-                xm += 100;
+            int xm = 60;
+            int ym = 925;
+
+
+            //Prints out all the movement Strings
+            for(int i = 0; i < moves.length; i ++){
+                g.drawRect(55,700,460,285);
+
+                g.drawString(moves[i],xm,ym);
+
+                if(i == 0 || i == 1 || i == 2 || i == 3){
+                    xm += 100;
+                }
+                if(i == 3){
+                    ym += 50;
+                    xm = 60;
+                }
+                else if(i >= 3){
+                    xm += 150;
+                }
             }
-            if(i == 3){
-                ym += 50;
-                xm = 60;
-            }
-            else if(i >= 3){
-                xm += 150;
-            }
-        }
 
-        //All of this prints the Score/Name/Best/ + the rectangle
-        ym -= 50;
-        xm += 20;
-        g.drawRect(515,700,325,285);
-        g.drawString(name, xm, ym);
+            //All of this prints the Score/Name/Best/ + the rectangle
+            ym -= 50;
+            xm += 20;
+            g.drawRect(515,700,325,285);
+            g.drawString(name, xm, ym);
 
-        ym += 50;
+            ym += 50;
 
-        g.drawString("Score: " + score, xm, ym);
+            g.drawString("Score: " + score, xm, ym);
 
-        xm += 175;
+            xm += 175;
 
-        g.drawString("Best: " + play.getBest(), xm, ym);
+            g.drawString("Best: " + play.getBest(), xm, ym);
 
 
 
-        g.drawRect(54,0,1800,900);
-        for (int c = 0; c < 60; c++) {
+            g.drawRect(54,0,1800,900);
+            for (int c = 0; c < 60; c++) {
                 for (int r = 0; r < 30; r++) {
                     g.drawRect(x, y, 30, 30);
 
@@ -121,7 +124,25 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
                 }
                 x += 30;
                 y = 1;
+            }
         }
+        else{
+            Font currentFont = g.getFont();
+            Font biggerFont = currentFont.deriveFont(currentFont.getSize() * 3f);
+            g.setFont(biggerFont);
+
+            g.drawRect(0,0,2000,1000);
+            g.fillRect(0,0,2000,1000);
+
+            g.setColor(Color.GREEN);
+            g.drawRect(850,300,200,100);
+            g.fillRect(850,300,200,100);
+            g.setColor(Color.BLACK);
+            g.drawString("PLAY", 905,360);
+
+
+        }
+
     }
 
     public void mouseClicked(MouseEvent e) {
