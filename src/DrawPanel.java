@@ -37,8 +37,8 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
 
         super.paintComponent(g);
 
-        int x = 0;
-        int y = 30;
+        int x = 55;
+        int y = 1;
 
         Graphics2D g2 = (Graphics2D)g;
 
@@ -48,19 +48,43 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
 
         String[] moves = {"W: Up", "S: Down", "A: Left", "D: Right", "Q: Dash Up", "E: Dash Left", "Z: Dash Right"};
 
-        int xm = 1210;
-        int ym = 70;
+        int xm = 60;
+        int ym = 925;
 
-        for(String move : moves ){
-            g.drawString(move, xm,ym);
-            ym += 40;
-            g.drawString(name, xm, 500);
-            g.drawString("Score: " + score, xm, 550);
-            g.drawString("Best: " + play.getBest(), xm, 575);
+        for(int i = 0; i < moves.length; i ++){
+            g.drawRect(55,700,460,285);
+
+            g.drawString(moves[i],xm,ym);
+
+            if(i == 0 || i == 1 || i == 2 || i == 3){
+                xm += 100;
+            }
+            if(i == 3){
+                ym += 50;
+                xm = 60;
+            }
+            else if(i >= 3){
+                xm += 150;
+            }
         }
 
+        ym -= 50;
+        xm += 20;
+        g.drawRect(515,700,325,285);
+        g.drawString(name, xm, ym);
 
-        for (int c = 0; c < 40; c++) {
+        ym += 50;
+
+        g.drawString("Score: " + score, xm, ym);
+
+        xm += 175;
+
+        g.drawString("Best: " + play.getBest(), xm, ym);
+
+
+
+        g.drawRect(54,0,1800,900);
+        for (int c = 0; c < 60; c++) {
                 for (int r = 0; r < 30; r++) {
                     g.drawRect(x, y, 30, 30);
 
@@ -92,7 +116,7 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
                     y += 30;
                 }
                 x += 30;
-                y = 30;
+                y = 1;
         }
     }
 
@@ -143,7 +167,7 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
 
         //go right
         else if (keyCode == KeyEvent.VK_D) {
-            if(obstacle.getPlayerCol() != 39 && playField[obstacle.getPlayerRow()][obstacle.getPlayerCol() + 1] ==  4){
+            if(obstacle.getPlayerCol() != 59 && playField[obstacle.getPlayerRow()][obstacle.getPlayerCol() + 1] ==  4){
 
                 playField[obstacle.getPlayerRow()][obstacle.getPlayerCol() + 1] = 5;
                 playField[obstacle.getPlayerRow()][obstacle.getPlayerCol()] = 4;
@@ -194,7 +218,7 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
 
         //dash right
         else if (keyCode == KeyEvent.VK_Z) {
-            if(obstacle.getPlayerCol() < 38 && playField[obstacle.getPlayerRow()][obstacle.getPlayerCol() + 2] == 4){
+            if(obstacle.getPlayerCol() < 58 && playField[obstacle.getPlayerRow()][obstacle.getPlayerCol() + 2] == 4){
                 playField[obstacle.getPlayerRow()][obstacle.getPlayerCol() + 2] = 5;
                 playField[obstacle.getPlayerRow()][obstacle.getPlayerCol()] = 4;
                 obstacle.setPlayerCol(obstacle.getPlayerCol() + 2);

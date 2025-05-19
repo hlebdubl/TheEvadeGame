@@ -7,23 +7,23 @@ public class Obstacles {
     private final int ROAD = 4;
     private final int PLAYER = 5;
     private int playerRow = 29;
-    private int playerCol = 20;
+    private int playerCol = 32;
 
     //Constructor, sets up a new field when created
     Obstacles() {
-        layout = new int[30][40];
+        layout = new int[30][60];
         initialField();
     }
 
     //CREATES THE FIRST ITERATION OF THE FIELD
     public void initialField() {
         for (int row = 29; row >= 0; row--) {
-            for (int col = 39; col >= 0; col--) {
+            for (int col = 59; col >= 0; col--) {
                 int nextBlock = (int) (Math.random() * 4) + 1;
                 if (!hasRoad(row, col) && nextBlock != 4) {
                     nextBlock = 4;
                 }
-                if (row == 29 && col == 20) {
+                if (row == 29 && col == 32) {
                     layout[row][col] = PLAYER;
                 } else if (nextBlock == 1) {
                     layout[row][col] = OBSTACLEONE;
@@ -44,9 +44,9 @@ public class Obstacles {
     public void generateMore() {
         if (playerRow <= 20) {
             for (int row = 29; row > 0; row--) {
-                System.arraycopy(layout[row - 1], 0, layout[row], 0, 40);
+                System.arraycopy(layout[row - 1], 0, layout[row], 0, 60);
             }
-            for (int col = 39; col >= 0; col--) {
+            for (int col = 59; col >= 0; col--) {
                 int nextBlock = (int) (Math.random() * 4) + 1;
                 if (!hasRoad(0, col) && nextBlock != 4) {
                     nextBlock = 4;
@@ -85,7 +85,7 @@ public class Obstacles {
     //USED FOR GENERATING THE FIELD, CHECKS FOR ROAD NEAR ALREADY EXISTING ROAD
     //TO MAKE SURE THERE IS A CONTINUOUS PATH
     public boolean hasRoad(int row, int col) {
-        if (col == 0 || col == 39) {
+        if (col == 0 || col == 59) {
             return true;
         }
         else{
