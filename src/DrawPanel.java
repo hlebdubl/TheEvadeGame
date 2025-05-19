@@ -16,7 +16,7 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
     private Obstacles obstacle;
     private int score;
     private String name;
-    private Font font;
+
 
     public DrawPanel() {
         this.addMouseListener(this);
@@ -46,11 +46,14 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
         Font biggerFont = currentFont.deriveFont(currentFont.getSize() * 2f);
         g.setFont(biggerFont);
 
+        //Stores movement Strings
         String[] moves = {"W: Up", "S: Down", "A: Left", "D: Right", "Q: Dash Up", "E: Dash Left", "Z: Dash Right"};
 
         int xm = 60;
         int ym = 925;
 
+
+        //Prints out all the movement Strings
         for(int i = 0; i < moves.length; i ++){
             g.drawRect(55,700,460,285);
 
@@ -68,6 +71,7 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
             }
         }
 
+        //All of this prints the Score/Name/Best/ + the rectangle
         ym -= 50;
         xm += 20;
         g.drawRect(515,700,325,285);

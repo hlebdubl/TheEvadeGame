@@ -38,9 +38,8 @@ public class Obstacles {
         }
     }
 
-    //ONCE PLAYER MOVES UP, A NEW LAYER IS GENERATED AND THE OLD ONE IS DELETED
-
-    //lowkey gotta look into if the parameters still match the current situation
+    //Once a certain requirenment is reached in the game, the game field is copied except the
+    //very last row which is then subbed in for by a newly generated row here
     public void generateMore() {
         if (playerRow <= 20) {
             for (int row = 29; row > 0; row--) {
