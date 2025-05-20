@@ -10,10 +10,10 @@ import java.util.Arrays;
 
 public class DrawPanel extends JPanel implements MouseListener, KeyListener {
 
-    private boolean onStartScreen = false;
+    private boolean onStartScreen = true;
     private boolean inGame = false;
     private boolean credits = false;
-    private boolean tips = true;
+    private boolean tips = false;
     private int[][] playField;
     private Player play;
     private Obstacles obstacle;
@@ -212,22 +212,31 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
     }
 
     public void mouseClicked(MouseEvent e) {
-        if(onStartScreen){
+        int x = e.getX();
+        int y = e.getY();
 
+        if(onStartScreen && x >= 850 && x <= 1050){
 
-            if(contains(100,100)){
+            if(y >= 300 && y <= 400 ){
                 inGame = true;
                 onStartScreen = false;
             }
-            else if(contains(50,50)){
+            else if(y >= 425 && y <= 500){
                 tips = true;
                 onStartScreen = false;
 
             }
-            else if(contains(0,0)){
+            else if(y >= 515 && y <= 590){
                 credits = true;
                 onStartScreen = false;
 
+            }
+        }
+        else if (credits || tips){
+            if(x >= 0 && x <= 75 && y >= 0 && y <= 75){
+                credits = false;
+                tips = false;
+                onStartScreen = true;
             }
         }
     }
