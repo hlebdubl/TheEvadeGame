@@ -30,14 +30,15 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
 
         playField = obstacle.exportField();
 
-        play = new Player("Player");
+        play = new Player("");
         score = play.getScore();
         name = play.getName();
     }
 
     protected void paintComponent(Graphics g) {
 
-        if(inGame){
+        //game screen
+        if(inGame) {
             Font currentFont = g.getFont();
             Font biggerFont = currentFont.deriveFont(currentFont.getSize() * 2f);
             g.setFont(biggerFont);
@@ -76,7 +77,7 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
             //All of this prints the Score/Name/Best/ + the rectangle
             ym -= 50;
             xm += 20;
-            g.drawRect(515,700,325,285);
+            g.drawRect(515,700,400,285);
             g.drawString(name, xm, ym);
 
             ym += 50;
@@ -123,7 +124,9 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
                 y = 1;
             }
         }
+        //draws out the tips screen
         else if (tips){
+
             g.setColor(Color.BLACK);
             g.drawRect(0,0,2000,2000);
             g.fillRect(0,0,2000,2000);
@@ -168,6 +171,7 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
             g.drawRect(0,0,75,75);
             g.drawString("X",20,50);
         }
+        //draws out the credits screen
         else if (credits){
             Font currentFont = g.getFont();
             Font biggerFont = currentFont.deriveFont(currentFont.getSize() * 4f);
@@ -185,6 +189,7 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
             g.drawString("X",20,50);
 
         }
+        //draws out the screen where you can name yourself
         else if (nameScreen){
             g.setColor(Color.BLACK);
             g.drawRect(0,0,2000,2000);
@@ -195,13 +200,16 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
             g.fillRect(600,400,700,100);
 
 
-
             Font currentFont = g.getFont();
             Font biggerFont = currentFont.deriveFont(currentFont.getSize() * 4f);
             g.setFont(biggerFont);
             g.drawRect(0,0,75,75);
             g.drawString("X",20,50);
+
+            g.setColor(Color.BLACK);
+            g.drawString(name, 605, 450);
         }
+        //else main menu screen
         else{
             Font currentFont = g.getFont();
             Font biggerFont = currentFont.deriveFont(currentFont.getSize() * 3f);
@@ -238,8 +246,9 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
         int x = e.getX();
         int y = e.getY();
 
+        //if in the x proximity of all the buttons
         if(onStartScreen && x >= 850 && x <= 1050){
-
+            //then decided on the y value
             if(y >= 300 && y <= 400 ){
                 inGame = true;
                 onStartScreen = false;
@@ -258,6 +267,7 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
                 onStartScreen = false;
             }
         }
+        //for other screen which has an X button to exit back to main menu
         else if (credits || tips || nameScreen){
             if(x >= 0 && x <= 75 && y >= 0 && y <= 75){
                 credits = false;
@@ -282,8 +292,10 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
     public void keyPressed(KeyEvent e) {
 
         int keyCode = e.getKeyCode();
+        //inputs for the game screen, so you can move around and all that
         if(inGame){
             //go up
+
             if(keyCode == KeyEvent.VK_W) {
                 if(playField[obstacle.getPlayerRow() - 1 ][obstacle.getPlayerCol()] == 4){
                     score += 15;
@@ -381,8 +393,17 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
             }
         }
 
-        else if(true){
-
+        //inputs for the name screen, so you can have a String name
+        else if(nameScreen){
+            if(name.length() < 18){
+                if(keyCode == KeyEvent.VK_BACK_SPACE && !name.isEmpty()){
+                    name = name.substring(0, name.length() - 1);
+                }
+                else{
+                    String toAdd = Character.toString(keyCode);
+                    name += toAdd;
+                }
+            }
         }
     }
     public void keyReleased(KeyEvent e) {
