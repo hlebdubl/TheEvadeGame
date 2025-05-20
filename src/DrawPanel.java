@@ -12,8 +12,8 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
 
     private boolean onStartScreen = false;
     private boolean inGame = false;
-    private boolean credits = true;
-    private boolean tips = false;
+    private boolean credits = false;
+    private boolean tips = true;
     private int[][] playField;
     private Player play;
     private Obstacles obstacle;
@@ -160,12 +160,17 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
 
             g.drawRect(700,650,175,125);
             g.drawString("Tip Final: Gurt", 725,700);
+
+            Font currentFont = g.getFont();
+            Font biggerFont = currentFont.deriveFont(currentFont.getSize() * 4f);
+            g.setFont(biggerFont);
+            g.drawRect(0,0,75,75);
+            g.drawString("X",20,50);
         }
         else if (credits){
             Font currentFont = g.getFont();
             Font biggerFont = currentFont.deriveFont(currentFont.getSize() * 4f);
             g.setFont(biggerFont);
-
 
             g.setColor(Color.BLACK);
             g.drawRect(0,0,2000,1000);
@@ -175,6 +180,8 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
             g.drawRect(700,400,525,100);
             g.drawString("Well, I guess I made it",725,450);
 
+            g.drawRect(0,0,75,75);
+            g.drawString("X",20,50);
 
         }
         else{
