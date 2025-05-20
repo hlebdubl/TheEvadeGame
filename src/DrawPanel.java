@@ -10,13 +10,15 @@ import java.util.Arrays;
 
 public class DrawPanel extends JPanel implements MouseListener, KeyListener {
 
-    private boolean onStartScreen = true;
+    private boolean onStartScreen = false;
+    private boolean inGame = false;
+    private boolean credits = true;
+    private boolean tips = false;
     private int[][] playField;
     private Player play;
     private Obstacles obstacle;
     private int score;
     private String name;
-
 
     public DrawPanel() {
         this.addMouseListener(this);
@@ -32,10 +34,9 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
         name = play.getName();
     }
 
-
     protected void paintComponent(Graphics g) {
 
-        if(!onStartScreen){
+        if(inGame){
             Font currentFont = g.getFont();
             Font biggerFont = currentFont.deriveFont(currentFont.getSize() * 2f);
             g.setFont(biggerFont);
@@ -47,14 +48,11 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
 
             Graphics2D g2 = (Graphics2D)g;
 
-
-
             //Stores movement Strings
             String[] moves = {"W: Up", "S: Down", "A: Left", "D: Right", "Q: Dash Up", "E: Dash Left", "Z: Dash Right"};
 
             int xm = 60;
             int ym = 925;
-
 
             //Prints out all the movement Strings
             for(int i = 0; i < moves.length; i ++){
@@ -87,8 +85,6 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
             xm += 175;
 
             g.drawString("Best: " + play.getBest(), xm, ym);
-
-
 
             g.drawRect(54,0,1800,900);
             for (int c = 0; c < 60; c++) {
@@ -126,6 +122,61 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
                 y = 1;
             }
         }
+        else if (tips){
+            g.setColor(Color.BLACK);
+            g.drawRect(0,0,2000,2000);
+            g.fillRect(0,0,2000,2000);
+
+            g.setColor(Color.PINK);
+            g.drawRect(200,100,125,125);
+            g.drawString("Tip 1: Go up",225,150);
+
+            g.drawRect(800,100,175,125);
+            g.drawString("Tip 2: Don't Dash Too Much", 820,150);
+
+            g.drawRect(290,500,175,125);
+            g.drawString("Tip 3: Go up = Score up", 305,555);
+
+            g.drawRect(500,300,175,125);
+            g.drawString("Tip 4: Figure it out", 520,355);
+
+            g.drawRect(1200,750,175,125);
+            g.drawString("Tip 5: Do some actual work", 1215,800);
+
+            g.drawRect(1500,800,200,150);
+            g.drawString("Tip 6: Stop acting like I made this", 1515,850);
+
+            g.drawRect(1300,500,175,125);
+            g.drawString("Tip 7: Idk", 1325,550);
+
+            g.drawRect(950,350,175,125);
+            g.drawString("Tip 8: No tips", 975,400);
+
+            g.drawRect(800,800,200,175);
+            g.drawString("Tip 9: What's a tip", 810,850);
+
+            g.drawRect(500,500,175,125);
+            g.drawString("Tip 10: Lowkey go up tbh", 510,550);
+
+            g.drawRect(700,650,175,125);
+            g.drawString("Tip Final: Gurt", 725,700);
+        }
+        else if (credits){
+            Font currentFont = g.getFont();
+            Font biggerFont = currentFont.deriveFont(currentFont.getSize() * 4f);
+            g.setFont(biggerFont);
+
+
+            g.setColor(Color.BLACK);
+            g.drawRect(0,0,2000,1000);
+            g.fillRect(0,0,2000,1000);
+
+            g.setColor(Color.red);
+            g.drawRect(700,400,525,100);
+            g.drawString("Well, I guess I made it",725,450);
+
+
+        }
         else{
             Font currentFont = g.getFont();
             Font biggerFont = currentFont.deriveFont(currentFont.getSize() * 3f);
@@ -150,29 +201,27 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
             g.drawString("TIPS", 910,475);
             g.drawString("CREDITS",875,565);
 
-
         }
-
     }
 
     public void mouseClicked(MouseEvent e) {
         if(onStartScreen){
-           //placeholders
 
 
             if(contains(100,100)){
-
+                inGame = true;
+                onStartScreen = false;
             }
-            //click play, play the game
             else if(contains(50,50)){
+                tips = true;
+                onStartScreen = false;
 
             }
-           //clicked tips, open tips menu
-
             else if(contains(0,0)){
+                credits = true;
+                onStartScreen = false;
 
             }
-           //clicked credits, see something idk
         }
     }
     public void mousePressed(MouseEvent e) {
@@ -204,7 +253,6 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
                 obstacle.setPlayerRow(obstacle.getPlayerRow() - 1);
             }
         }
-
         //go left
         else if (keyCode == KeyEvent.VK_A) {
             if(obstacle.getPlayerCol() != 0 && playField[obstacle.getPlayerRow()][obstacle.getPlayerCol() - 1] == 4){
@@ -214,7 +262,6 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
                 obstacle.setPlayerCol(obstacle.getPlayerCol() - 1);
             }
         }
-
         //go right
         else if (keyCode == KeyEvent.VK_D) {
             if(obstacle.getPlayerCol() != 59 && playField[obstacle.getPlayerRow()][obstacle.getPlayerCol() + 1] ==  4){
@@ -224,7 +271,6 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
                 obstacle.setPlayerCol(obstacle.getPlayerCol() + 1);
             }
         }
-
         //go down
         else if (keyCode == KeyEvent.VK_S) {
             if(obstacle.getPlayerRow() != 29 && playField[obstacle.getPlayerRow() + 1][obstacle.getPlayerCol()] == 4){
@@ -238,7 +284,6 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
                 obstacle.setPlayerRow(obstacle.getPlayerRow() + 1);
             }
         }
-
         //dash up
         else if (keyCode == KeyEvent.VK_Q) {
             if(playField[obstacle.getPlayerRow() - 2][obstacle.getPlayerCol()] == 4){
@@ -252,7 +297,6 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
 
             }
         }
-
         //dash left
         else if (keyCode == KeyEvent.VK_E) {
             if(obstacle.getPlayerCol() > 1 && playField[obstacle.getPlayerRow()][obstacle.getPlayerCol() - 2] == 4){
@@ -265,7 +309,6 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
                 play.compareScore();
             }
         }
-
         //dash right
         else if (keyCode == KeyEvent.VK_Z) {
             if(obstacle.getPlayerCol() < 58 && playField[obstacle.getPlayerRow()][obstacle.getPlayerCol() + 2] == 4){
@@ -278,12 +321,10 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
                 play.compareScore();
             }
         }
-
         //generates new lines once the player steps on row 20
         if(obstacle.getPlayerRow() == 20){
             obstacle.generateMore();
         }
-
         //in case dash happens on row 19
         //and two extra rows need to be generated
         else if(obstacle.getPlayerRow() == 19){
@@ -297,7 +338,6 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
         }
 
     }
-
     public void keyReleased(KeyEvent e) {
     }
 }
