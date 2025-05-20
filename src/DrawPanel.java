@@ -14,6 +14,7 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
     private boolean inGame = false;
     private boolean credits = false;
     private boolean tips = false;
+    private boolean nameScreen = false;
     private int[][] playField;
     private Player play;
     private Obstacles obstacle;
@@ -184,6 +185,23 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
             g.drawString("X",20,50);
 
         }
+        else if (nameScreen){
+            g.setColor(Color.BLACK);
+            g.drawRect(0,0,2000,2000);
+            g.fillRect(0,0,2000,2000);
+
+            g.setColor(Color.lightGray);
+            g.drawRect(600,400,700,100);
+            g.fillRect(600,400,700,100);
+
+
+
+            Font currentFont = g.getFont();
+            Font biggerFont = currentFont.deriveFont(currentFont.getSize() * 4f);
+            g.setFont(biggerFont);
+            g.drawRect(0,0,75,75);
+            g.drawString("X",20,50);
+        }
         else{
             Font currentFont = g.getFont();
             Font biggerFont = currentFont.deriveFont(currentFont.getSize() * 3f);
@@ -202,11 +220,16 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
             g.drawRect(850,515,200,75);
             g.fillRect(850,515,200,75);
 
+            g.drawRect(850,600,200,125);
+            g.fillRect(850,600,200,125);
+
 
             g.setColor(Color.BLACK);
             g.drawString("PLAY", 905,360);
             g.drawString("TIPS", 910,475);
             g.drawString("CREDITS",875,565);
+            g.drawString("NAME", 900, 650);
+            g.drawString("YOURSELF", 855, 700);
 
         }
     }
@@ -224,18 +247,22 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
             else if(y >= 425 && y <= 500){
                 tips = true;
                 onStartScreen = false;
-
             }
             else if(y >= 515 && y <= 590){
                 credits = true;
                 onStartScreen = false;
+            }
 
+            else if(y >= 600 && y <= 725){
+                nameScreen = true;
+                onStartScreen = false;
             }
         }
-        else if (credits || tips){
+        else if (credits || tips || nameScreen){
             if(x >= 0 && x <= 75 && y >= 0 && y <= 75){
                 credits = false;
                 tips = false;
+                nameScreen = false;
                 onStartScreen = true;
             }
         }
@@ -255,104 +282,108 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
     public void keyPressed(KeyEvent e) {
 
         int keyCode = e.getKeyCode();
+        if(inGame){
+            //go up
+            if(keyCode == KeyEvent.VK_W) {
+                if(playField[obstacle.getPlayerRow() - 1 ][obstacle.getPlayerCol()] == 4){
+                    score += 15;
+                    play.addScore(15);
 
-        //go up
-        if(keyCode == KeyEvent.VK_W) {
-            if(playField[obstacle.getPlayerRow() - 1 ][obstacle.getPlayerCol()] == 4){
-                score += 15;
-                play.addScore(15);
+                    play.compareScore();
 
-                play.compareScore();
+                    playField[obstacle.getPlayerRow() - 1][obstacle.getPlayerCol()] = 5;
+                    playField[obstacle.getPlayerRow()][obstacle.getPlayerCol()] = 4;
+                    obstacle.setPlayerRow(obstacle.getPlayerRow() - 1);
+                }
+            }
+            //go left
+            else if (keyCode == KeyEvent.VK_A) {
+                if(obstacle.getPlayerCol() != 0 && playField[obstacle.getPlayerRow()][obstacle.getPlayerCol() - 1] == 4){
 
-                playField[obstacle.getPlayerRow() - 1][obstacle.getPlayerCol()] = 5;
-                playField[obstacle.getPlayerRow()][obstacle.getPlayerCol()] = 4;
-                obstacle.setPlayerRow(obstacle.getPlayerRow() - 1);
+                    playField[obstacle.getPlayerRow()][obstacle.getPlayerCol() - 1] = 5;
+                    playField[obstacle.getPlayerRow()][obstacle.getPlayerCol()] = 4;
+                    obstacle.setPlayerCol(obstacle.getPlayerCol() - 1);
+                }
+            }
+            //go right
+            else if (keyCode == KeyEvent.VK_D) {
+                if(obstacle.getPlayerCol() != 59 && playField[obstacle.getPlayerRow()][obstacle.getPlayerCol() + 1] ==  4){
+
+                    playField[obstacle.getPlayerRow()][obstacle.getPlayerCol() + 1] = 5;
+                    playField[obstacle.getPlayerRow()][obstacle.getPlayerCol()] = 4;
+                    obstacle.setPlayerCol(obstacle.getPlayerCol() + 1);
+                }
+            }
+            //go down
+            else if (keyCode == KeyEvent.VK_S) {
+                if(obstacle.getPlayerRow() != 29 && playField[obstacle.getPlayerRow() + 1][obstacle.getPlayerCol()] == 4){
+                    score -= 25;
+                    play.addScore(-25);
+
+                    play.compareScore();
+
+                    playField[obstacle.getPlayerRow() + 1][obstacle.getPlayerCol()] = 5;
+                    playField[obstacle.getPlayerRow()][obstacle.getPlayerCol()] = 4;
+                    obstacle.setPlayerRow(obstacle.getPlayerRow() + 1);
+                }
+            }
+            //dash up
+            else if (keyCode == KeyEvent.VK_Q) {
+                if(playField[obstacle.getPlayerRow() - 2][obstacle.getPlayerCol()] == 4){
+                    playField[obstacle.getPlayerRow() - 2][obstacle.getPlayerCol()] = 5;
+                    playField[obstacle.getPlayerRow()][obstacle.getPlayerCol()] = 4;
+                    obstacle.setPlayerRow(obstacle.getPlayerRow() - 2);
+                    play.addScore(-20);
+                    score -= 20;
+
+                    play.compareScore();
+
+                }
+            }
+            //dash left
+            else if (keyCode == KeyEvent.VK_E) {
+                if(obstacle.getPlayerCol() > 1 && playField[obstacle.getPlayerRow()][obstacle.getPlayerCol() - 2] == 4){
+                    playField[obstacle.getPlayerRow()][obstacle.getPlayerCol() - 2] = 5;
+                    playField[obstacle.getPlayerRow()][obstacle.getPlayerCol()] = 4;
+                    obstacle.setPlayerCol(obstacle.getPlayerCol() - 2);
+                    play.addScore(-10);
+                    score -= 10;
+
+                    play.compareScore();
+                }
+            }
+            //dash right
+            else if (keyCode == KeyEvent.VK_Z) {
+                if(obstacle.getPlayerCol() < 58 && playField[obstacle.getPlayerRow()][obstacle.getPlayerCol() + 2] == 4){
+                    playField[obstacle.getPlayerRow()][obstacle.getPlayerCol() + 2] = 5;
+                    playField[obstacle.getPlayerRow()][obstacle.getPlayerCol()] = 4;
+                    obstacle.setPlayerCol(obstacle.getPlayerCol() + 2);
+                    play.addScore(-10);
+                    score -= 10;
+
+                    play.compareScore();
+                }
+            }
+            //generates new lines once the player steps on row 20
+            if(obstacle.getPlayerRow() == 20){
+                obstacle.generateMore();
+            }
+            //in case dash happens on row 19
+            //and two extra rows need to be generated
+            else if(obstacle.getPlayerRow() == 19){
+                obstacle.generateMore();
+                obstacle.generateMore();
+            }
+            //Ensuring score stays at 0 or above
+            if(score < 0){
+                score = 0;
+                play.nullScore();
             }
         }
-        //go left
-        else if (keyCode == KeyEvent.VK_A) {
-            if(obstacle.getPlayerCol() != 0 && playField[obstacle.getPlayerRow()][obstacle.getPlayerCol() - 1] == 4){
 
-                playField[obstacle.getPlayerRow()][obstacle.getPlayerCol() - 1] = 5;
-                playField[obstacle.getPlayerRow()][obstacle.getPlayerCol()] = 4;
-                obstacle.setPlayerCol(obstacle.getPlayerCol() - 1);
-            }
-        }
-        //go right
-        else if (keyCode == KeyEvent.VK_D) {
-            if(obstacle.getPlayerCol() != 59 && playField[obstacle.getPlayerRow()][obstacle.getPlayerCol() + 1] ==  4){
+        else if(true){
 
-                playField[obstacle.getPlayerRow()][obstacle.getPlayerCol() + 1] = 5;
-                playField[obstacle.getPlayerRow()][obstacle.getPlayerCol()] = 4;
-                obstacle.setPlayerCol(obstacle.getPlayerCol() + 1);
-            }
         }
-        //go down
-        else if (keyCode == KeyEvent.VK_S) {
-            if(obstacle.getPlayerRow() != 29 && playField[obstacle.getPlayerRow() + 1][obstacle.getPlayerCol()] == 4){
-                score -= 25;
-                play.addScore(-25);
-
-                play.compareScore();
-
-                playField[obstacle.getPlayerRow() + 1][obstacle.getPlayerCol()] = 5;
-                playField[obstacle.getPlayerRow()][obstacle.getPlayerCol()] = 4;
-                obstacle.setPlayerRow(obstacle.getPlayerRow() + 1);
-            }
-        }
-        //dash up
-        else if (keyCode == KeyEvent.VK_Q) {
-            if(playField[obstacle.getPlayerRow() - 2][obstacle.getPlayerCol()] == 4){
-               playField[obstacle.getPlayerRow() - 2][obstacle.getPlayerCol()] = 5;
-               playField[obstacle.getPlayerRow()][obstacle.getPlayerCol()] = 4;
-               obstacle.setPlayerRow(obstacle.getPlayerRow() - 2);
-               play.addScore(-20);
-               score -= 20;
-
-                play.compareScore();
-
-            }
-        }
-        //dash left
-        else if (keyCode == KeyEvent.VK_E) {
-            if(obstacle.getPlayerCol() > 1 && playField[obstacle.getPlayerRow()][obstacle.getPlayerCol() - 2] == 4){
-                playField[obstacle.getPlayerRow()][obstacle.getPlayerCol() - 2] = 5;
-                playField[obstacle.getPlayerRow()][obstacle.getPlayerCol()] = 4;
-                obstacle.setPlayerCol(obstacle.getPlayerCol() - 2);
-                play.addScore(-10);
-                score -= 10;
-
-                play.compareScore();
-            }
-        }
-        //dash right
-        else if (keyCode == KeyEvent.VK_Z) {
-            if(obstacle.getPlayerCol() < 58 && playField[obstacle.getPlayerRow()][obstacle.getPlayerCol() + 2] == 4){
-                playField[obstacle.getPlayerRow()][obstacle.getPlayerCol() + 2] = 5;
-                playField[obstacle.getPlayerRow()][obstacle.getPlayerCol()] = 4;
-                obstacle.setPlayerCol(obstacle.getPlayerCol() + 2);
-                play.addScore(-10);
-                score -= 10;
-
-                play.compareScore();
-            }
-        }
-        //generates new lines once the player steps on row 20
-        if(obstacle.getPlayerRow() == 20){
-            obstacle.generateMore();
-        }
-        //in case dash happens on row 19
-        //and two extra rows need to be generated
-        else if(obstacle.getPlayerRow() == 19){
-            obstacle.generateMore();
-            obstacle.generateMore();
-        }
-        //Ensuring score stays at 0 or above
-        if(score < 0){
-            score = 0;
-            play.nullScore();
-        }
-
     }
     public void keyReleased(KeyEvent e) {
     }
