@@ -409,17 +409,14 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
                 play.nullScore();
             }
         }
-
         //inputs for the name screen, so you can have a String name
         else if(nameScreen){
-            if(name.length() < 15){
-                if(keyCode == KeyEvent.VK_BACK_SPACE && !name.isEmpty()){
-                    name = name.substring(0, name.length() - 1);
-                }
-                else{
-                    String toAdd = Character.toString(keyCode);
-                    name += toAdd;
-                }
+            if(name.length() < 15 && keyCode != KeyEvent.VK_BACK_SPACE){
+                String toAdd = Character.toString(keyCode);
+                name += toAdd;
+            }
+            if(keyCode == KeyEvent.VK_BACK_SPACE && !name.isEmpty()){
+                name = name.substring(0, name.length() - 1);
             }
         }
     }
