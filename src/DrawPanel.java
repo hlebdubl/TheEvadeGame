@@ -90,9 +90,9 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
 
             //Reset button
 
-            g.drawRect(915, 700, 150,285);
+            g.drawRect(915, 900, 150,85);
             g.setColor(Color.BLACK);
-            g.fillRect(915,700,150,285);
+            g.fillRect(915,900,150,85);
             g.setColor(Color.RED);
             g.drawString("RESET", 940, 950);
 
