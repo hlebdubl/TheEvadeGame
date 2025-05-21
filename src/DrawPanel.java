@@ -204,8 +204,8 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
             g.fillRect(0,0,2000,2000);
 
             g.setColor(Color.lightGray);
-            g.drawRect(600,400,700,100);
-            g.fillRect(600,400,700,100);
+            g.drawRect(600,400,750,100);
+            g.fillRect(600,400,750,100);
 
 
             Font currentFont = g.getFont();
@@ -305,7 +305,7 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
     public void keyTyped(KeyEvent e) {
     }
 
-    //CHECKS FOR WHAT KEY IS PRESSED TO MOVE
+    //CHECKS FOR WHAT KEY IS PRESSED TO MOVE OR TYPE NAME
     public void keyPressed(KeyEvent e) {
 
         int keyCode = e.getKeyCode();
@@ -412,7 +412,7 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
 
         //inputs for the name screen, so you can have a String name
         else if(nameScreen){
-            if(name.length() < 18){
+            if(name.length() < 15){
                 if(keyCode == KeyEvent.VK_BACK_SPACE && !name.isEmpty()){
                     name = name.substring(0, name.length() - 1);
                 }
