@@ -88,13 +88,23 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
 
             g.drawString("Best: " + play.getBest(), xm, ym);
 
-            //Reset button
 
+
+            //Reset button
             g.drawRect(915, 900, 150,85);
             g.setColor(Color.BLACK);
             g.fillRect(915,900,150,85);
             g.setColor(Color.RED);
             g.drawString("RESET", 940, 950);
+
+
+            //Back to Menu
+            g.setColor(Color.BLACK);
+            g.drawRect(1700,900,155,85);
+            g.fillRect(1700,900,155,85);
+            g.setColor(Color.RED);
+            g.drawString("MENU", 1745, 950);
+
 
             g.drawRect(54,0,1800,900);
             for (int c = 0; c < 60; c++) {
@@ -290,7 +300,10 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
                 obstacle.setPlayerRow(29);
                 obstacle.setPlayerCol(32);
                 score = 0;
-
+            }
+            if(x >= 1700 && x <= 1855 && y >= 900 && y <= 985){
+                inGame = false;
+                onStartScreen = true;
             }
         }
     }
