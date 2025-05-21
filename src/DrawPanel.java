@@ -289,6 +289,7 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
                 obstacle.initialField();
                 obstacle.setPlayerRow(29);
                 obstacle.setPlayerCol(32);
+                score = 0;
 
             }
         }
