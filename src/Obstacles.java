@@ -6,8 +6,13 @@ public class Obstacles {
     private final int OBSTACLETHREE = 3;
     private final int ROAD = 4;
     private final int PLAYER = 5;
+    private final int ENEMY = 6;
+    private final int RADIATION = 7;
+    private final int[] entityRow = new int[5];
+    private final int[] entityCol = new int[5];
     private int playerRow = 29;
     private int playerCol = 32;
+    private int numberOfEntities = 5;
 
     //Constructor, sets up a new field when created
     Obstacles() {
