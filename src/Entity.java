@@ -2,6 +2,11 @@ public class Entity {
     private int col;
     private int row;
 
+    Entity(int row, int col){
+        this.row = row;
+        this.col = col;
+    }
+
     public int getCol() {
         return col;
     }

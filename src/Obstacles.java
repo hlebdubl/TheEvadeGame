@@ -23,14 +23,16 @@ public class Obstacles {
         layout = new int[30][60];
         initialField();
 
-        Entity entityOne = new Entity();
-        Entity entityTwo = new Entity();
-        Entity entityThree = new Entity();
-        Entity entityFour = new Entity();
+        Entity entityOne = new Entity(15,30);
+        Entity entityTwo = new Entity(20,45);
+        Entity entityThree = new Entity(25,10);
+        Entity entityFour = new Entity(5,5);
+        Entity entityFive = new Entity(20,30);
         enemies.add(entityOne);
         enemies.add(entityTwo);
         enemies.add(entityThree);
         enemies.add(entityFour);
+        enemies.add(entityFive);
     }
 
     //CREATES THE FIRST ITERATION OF THE FIELD

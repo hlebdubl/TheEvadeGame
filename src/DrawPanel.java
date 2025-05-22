@@ -436,7 +436,9 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
                 score = 0;
                 play.nullScore();
             }
-            for(int i  = 0; i < 4; i ++) {
+
+            //each time the player move, entities try to move
+            for(int i  = 0; i < 5; i ++) {
                 enemies.get(i).entityMovement(playField);
                 playField[enemies.get(i).getRow()][enemies.get(i).getCol()] = 6;
             }
