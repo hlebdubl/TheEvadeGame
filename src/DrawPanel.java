@@ -311,10 +311,7 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
         }
         else if(inGame){
             if(x >= 915 && x <= 1065 && y >= 900 && y <= 985){
-                obstacle.initialField();
-                obstacle.setPlayerRow(29);
-                obstacle.setPlayerCol(32);
-                score = 0;
+                reset();
             }
             if(x >= 1700 && x <= 1855 && y >= 900 && y <= 985){
                 inGame = false;
@@ -352,28 +349,37 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
                     playField[obstacle.getPlayerRow()][obstacle.getPlayerCol()] = 4;
                     obstacle.setPlayerRow(obstacle.getPlayerRow() - 1);
                 }
+                else if(playField[obstacle.getPlayerRow() - 1 ][obstacle.getPlayerCol()] == 6){
+                    reset();
+                }
             }
             //go left
-            else if (keyCode == KeyEvent.VK_A) {
-                if(obstacle.getPlayerCol() != 0 && playField[obstacle.getPlayerRow()][obstacle.getPlayerCol() - 1] == 4){
+            else if (keyCode == KeyEvent.VK_A && obstacle.getPlayerCol() != 0) {
+                if(playField[obstacle.getPlayerRow()][obstacle.getPlayerCol() - 1] == 4){
 
                     playField[obstacle.getPlayerRow()][obstacle.getPlayerCol() - 1] = 5;
                     playField[obstacle.getPlayerRow()][obstacle.getPlayerCol()] = 4;
                     obstacle.setPlayerCol(obstacle.getPlayerCol() - 1);
                 }
+                else if(playField[obstacle.getPlayerRow()][obstacle.getPlayerCol() - 1] == 6){
+                    reset();
+                }
             }
             //go right
-            else if (keyCode == KeyEvent.VK_D) {
-                if(obstacle.getPlayerCol() != 59 && playField[obstacle.getPlayerRow()][obstacle.getPlayerCol() + 1] ==  4){
+            else if (keyCode == KeyEvent.VK_D && obstacle.getPlayerCol() != 59) {
+                if(playField[obstacle.getPlayerRow()][obstacle.getPlayerCol() + 1] ==  4){
 
                     playField[obstacle.getPlayerRow()][obstacle.getPlayerCol() + 1] = 5;
                     playField[obstacle.getPlayerRow()][obstacle.getPlayerCol()] = 4;
                     obstacle.setPlayerCol(obstacle.getPlayerCol() + 1);
                 }
+                else if(playField[obstacle.getPlayerRow()][obstacle.getPlayerCol() + 1] == 6){
+                    reset();
+                }
             }
             //go down
-            else if (keyCode == KeyEvent.VK_S) {
-                if(obstacle.getPlayerRow() != 29 && playField[obstacle.getPlayerRow() + 1][obstacle.getPlayerCol()] == 4){
+            else if (keyCode == KeyEvent.VK_S && obstacle.getPlayerRow() != 29) {
+                if(playField[obstacle.getPlayerRow() + 1][obstacle.getPlayerCol()] == 4){
                     score -= 25;
                     play.addScore(-25);
 
@@ -382,6 +388,9 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
                     playField[obstacle.getPlayerRow() + 1][obstacle.getPlayerCol()] = 5;
                     playField[obstacle.getPlayerRow()][obstacle.getPlayerCol()] = 4;
                     obstacle.setPlayerRow(obstacle.getPlayerRow() + 1);
+                }
+                else if(playField[obstacle.getPlayerRow() + 1 ][obstacle.getPlayerCol()] == 6){
+                    reset();
                 }
             }
             //dash up
@@ -396,10 +405,14 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
                     play.compareScore();
 
                 }
+                else if(playField[obstacle.getPlayerRow() - 2 ][obstacle.getPlayerCol()] == 6){
+                    reset();
+                }
             }
             //dash left
-            else if (keyCode == KeyEvent.VK_E) {
-                if(obstacle.getPlayerCol() > 1 && playField[obstacle.getPlayerRow()][obstacle.getPlayerCol() - 2] == 4){
+            else if (keyCode == KeyEvent.VK_E && obstacle.getPlayerCol() > 1) {
+                if(playField[obstacle.getPlayerRow()][obstacle.getPlayerCol() - 2] == 4){
+
                     playField[obstacle.getPlayerRow()][obstacle.getPlayerCol() - 2] = 5;
                     playField[obstacle.getPlayerRow()][obstacle.getPlayerCol()] = 4;
                     obstacle.setPlayerCol(obstacle.getPlayerCol() - 2);
@@ -408,10 +421,14 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
 
                     play.compareScore();
                 }
+                else if(playField[obstacle.getPlayerRow()][obstacle.getPlayerCol() - 2] == 6){
+                    reset();
+                }
             }
             //dash right
-            else if (keyCode == KeyEvent.VK_Z) {
-                if(obstacle.getPlayerCol() < 58 && playField[obstacle.getPlayerRow()][obstacle.getPlayerCol() + 2] == 4){
+            else if (keyCode == KeyEvent.VK_Z && obstacle.getPlayerCol() < 58) {
+                if(playField[obstacle.getPlayerRow()][obstacle.getPlayerCol() + 2] == 4){
+
                     playField[obstacle.getPlayerRow()][obstacle.getPlayerCol() + 2] = 5;
                     playField[obstacle.getPlayerRow()][obstacle.getPlayerCol()] = 4;
                     obstacle.setPlayerCol(obstacle.getPlayerCol() + 2);
@@ -419,6 +436,9 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
                     score -= 10;
 
                     play.compareScore();
+                }
+                else if(playField[obstacle.getPlayerRow()][obstacle.getPlayerCol() + 2] == 6){
+                    reset();
                 }
             }
             //generates new lines once the player steps on row 20
@@ -456,5 +476,12 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
         }
     }
     public void keyReleased(KeyEvent e) {
+    }
+
+    public void reset(){
+        obstacle.initialField();
+        obstacle.setPlayerRow(29);
+        obstacle.setPlayerCol(32);
+        score = 0;
     }
 }
