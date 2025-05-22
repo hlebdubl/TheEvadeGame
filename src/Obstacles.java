@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class Obstacles {
 
     private int[][] layout;
@@ -8,16 +10,27 @@ public class Obstacles {
     private final int PLAYER = 5;
     private final int ENEMY = 6;
     private final int RADIATION = 7;
-    private final int[] entityRow = new int[5];
-    private final int[] entityCol = new int[5];
+    private final int[] entityRow = {15,20,25,5};
+    private final int[] entityCol = {30,45,10,5};
     private int playerRow = 29;
     private int playerCol = 32;
-    private int numberOfEntities = 5;
+    private int numberOfEntities = 4;
+    private ArrayList<Entity> enemies = new ArrayList<Entity>();
+
 
     //Constructor, sets up a new field when created
     Obstacles() {
         layout = new int[30][60];
         initialField();
+
+        Entity entityOne = new Entity();
+        Entity entityTwo = new Entity();
+        Entity entityThree = new Entity();
+        Entity entityFour = new Entity();
+        enemies.add(entityOne);
+        enemies.add(entityTwo);
+        enemies.add(entityThree);
+        enemies.add(entityFour);
     }
 
     //CREATES THE FIRST ITERATION OF THE FIELD
@@ -39,6 +52,10 @@ public class Obstacles {
                 } else if (nextBlock == 4) {
                     layout[row][col] = ROAD;
                 }
+                layout[15][30] = ENEMY;
+                layout[20][45] = ENEMY;
+                layout[25][10] = ENEMY;
+                layout[5][5] = ENEMY;
             }
         }
     }
@@ -84,6 +101,9 @@ public class Obstacles {
     }
     public void setPlayerCol(int playerCol) {
         this.playerCol = playerCol;
+    }
+    public ArrayList<Entity> importEntities(){
+        return enemies;
     }
 
     //USED FOR GENERATING THE FIELD, CHECKS FOR ROAD NEAR ALREADY EXISTING ROAD

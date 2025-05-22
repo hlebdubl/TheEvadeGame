@@ -20,6 +20,7 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
     private Obstacles obstacle;
     private int score;
     private String name;
+    private ArrayList<Entity> enemies = new ArrayList<Entity>();
 
     public DrawPanel() {
         this.addMouseListener(this);
@@ -33,6 +34,9 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
         play = new Player("");
         score = play.getScore();
         name = play.getName();
+
+        enemies = obstacle.importEntities();
+
     }
 
     protected void paintComponent(Graphics g) {
@@ -136,6 +140,16 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
                         g2.setColor(Color.BLACK);
                         g2.fillRect(x, y, 30, 30);
                         g2.setColor(Color.BLACK);
+                    }
+                    else if (playField[r][c] == 6){
+                        g2.setColor(Color.WHITE);
+                        g2.fillRect(x, y, 30, 30);
+                        g2.setColor(Color.WHITE);
+                    }
+                    else if (playField[r][c] == 7){
+                        g2.setColor(Color.PINK);
+                        g2.fillRect(x, y, 30, 30);
+                        g2.setColor(Color.PINK);
                     }
                     y += 30;
                 }
@@ -422,6 +436,11 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
                 score = 0;
                 play.nullScore();
             }
+            for(int i  = 0; i < 4; i ++) {
+                enemies.get(i).entityMovement(playField);
+                playField[enemies.get(i).getRow()][enemies.get(i).getCol()] = 6;
+            }
+
         }
         //inputs for the name screen, so you can have a String name
         else if(nameScreen){
