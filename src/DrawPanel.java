@@ -442,6 +442,20 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
                 }
             }
             //generates new lines once the player steps on row 20
+            //Ensuring score stays at 0 or above
+            if(score < 0){
+                score = 0;
+                play.nullScore();
+            }
+            obstacle.countEntities(playField);
+            enemies = obstacle.importEntities();
+            //each time the player move, entities try to move
+            for(int i  = 0; i < 5; i ++) {
+                enemies.get(i).entityMovement(playField);
+            }
+
+
+
             if(obstacle.getPlayerRow() == 20){
                 obstacle.generateMore();
             }
@@ -451,20 +465,6 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
                 obstacle.generateMore();
                 obstacle.generateMore();
             }
-            //Ensuring score stays at 0 or above
-            if(score < 0){
-                score = 0;
-                play.nullScore();
-            }
-
-            //each time the player move, entities try to move
-            for(int i  = 0; i < 5; i ++) {
-                enemies.get(i).entityMovement(playField);
-                playField[enemies.get(i).getRow()][enemies.get(i).getCol()] = 6;
-            }
-
-            obstacle.countEntities(playField);
-
         }
         //inputs for the name screen, so you can have a String name
         else if(nameScreen){
@@ -485,5 +485,7 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
         obstacle.setPlayerRow(29);
         obstacle.setPlayerCol(32);
         score = 0;
+        enemies = obstacle.importEntities();
+
     }
 }
