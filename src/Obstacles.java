@@ -58,6 +58,7 @@ public class Obstacles {
                 layout[20][45] = ENEMY;
                 layout[25][10] = ENEMY;
                 layout[5][5] = ENEMY;
+                layout[20][30] = ENEMY;
             }
         }
     }
@@ -86,6 +87,21 @@ public class Obstacles {
             }
             playerRow ++;
         }
+    }
+
+    public int countEntities(int[][] play){
+        int count = 0;
+        for(int row = 0; row < play.length; row ++){
+            for(int col = 0; col < play[0].length; col ++){
+                if(play[row][col] == ENEMY){
+                    count ++;
+                }
+            }
+        }
+        if(count < 3){
+            play[5][30] = ENEMY;
+        }
+        return count;
     }
 
     //GETTERS AND SETTERS

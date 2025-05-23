@@ -463,6 +463,8 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
                 playField[enemies.get(i).getRow()][enemies.get(i).getCol()] = 6;
             }
 
+            obstacle.countEntities(playField);
+
         }
         //inputs for the name screen, so you can have a String name
         else if(nameScreen){
