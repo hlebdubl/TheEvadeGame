@@ -9,11 +9,8 @@ public class Obstacles {
     private final int ROAD = 4;
     private final int PLAYER = 5;
     private final int ENEMY = 6;
-    private final int[] entityRow = {15,20,25,5};
-    private final int[] entityCol = {30,45,10,5};
     private int playerRow = 29;
     private int playerCol = 32;
-    private int numberOfEntities = 4;
     private ArrayList<Entity> enemies = new ArrayList<Entity>();
 
 
@@ -21,8 +18,6 @@ public class Obstacles {
     Obstacles() {
         layout = new int[30][60];
         initialField();
-
-
     }
 
     //CREATES THE FIRST ITERATION OF THE FIELD
@@ -96,8 +91,8 @@ public class Obstacles {
             for(int col = 0; col < play[0].length; col ++){
                 if(play[row][col] == ENEMY){
                     count ++;
-                    if(row < 3){
-                        enemies.remove(count - 1);
+                    if(row >=  25){
+                        enemies.remove(count);
                     }
                     }
                 }
@@ -127,6 +122,9 @@ public class Obstacles {
     }
     public ArrayList<Entity> importEntities(){
         return enemies;
+    }
+    public void getThemBack(ArrayList<Entity> enemy){
+        enemies = enemy;
     }
 
     //USED FOR GENERATING THE FIELD, CHECKS FOR ROAD NEAR ALREADY EXISTING ROAD
