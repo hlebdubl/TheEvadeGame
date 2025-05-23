@@ -90,7 +90,7 @@ public class Obstacles {
         }
     }
 
-    public int countEntities(int[][] play){
+    public void countEntities(int[][] play){
         int count = 0;
         for(int row = 0; row < play.length; row ++){
             for(int col = 0; col < play[0].length; col ++){
@@ -107,7 +107,6 @@ public class Obstacles {
             enemies.add(newEntity);
             play[5][30] = ENEMY;
         }
-        return count;
     }
 
     //GETTERS AND SETTERS
