@@ -17,7 +17,7 @@ public class Entity {
         this.row = row;
     }
 
-    public void entityMovement(int[][] field){
+    public int[][] entityMovement(int[][] field){
         int choice = (int) (Math.random() * 5 + 1);
 
         if(row >= 24){
@@ -48,5 +48,7 @@ public class Entity {
             col --;
             field[row][col] = 6;
         }
+
+        return field;
     }
 }

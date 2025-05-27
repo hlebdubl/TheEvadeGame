@@ -9,6 +9,7 @@ public class Obstacles {
     private final int ROAD = 4;
     private final int PLAYER = 5;
     private final int ENEMY = 6;
+    private final int RAD = 7;
     private int playerRow = 29;
     private int playerCol = 32;
     private ArrayList<Entity> enemies = new ArrayList<Entity>();

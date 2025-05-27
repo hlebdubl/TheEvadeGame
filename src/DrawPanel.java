@@ -350,8 +350,7 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
                     obstacle.setPlayerRow(obstacle.getPlayerRow() - 1);
 
                     for(int i  = 0; i < 5; i ++) {
-                        enemies.get(i).entityMovement(playField);
-
+                        playField = enemies.get(i).entityMovement(playField);
                     }
                 }
                 else if(playField[obstacle.getPlayerRow() - 1 ][obstacle.getPlayerCol()] == 6){
@@ -368,7 +367,7 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
                     obstacle.setPlayerCol(obstacle.getPlayerCol() - 1);
 
                     for(int i  = 0; i < 5; i ++) {
-                        enemies.get(i).entityMovement(playField);
+                        playField = enemies.get(i).entityMovement(playField);
                     }
                 }
                 else if(playField[obstacle.getPlayerRow()][obstacle.getPlayerCol() - 1] == 6){
@@ -385,7 +384,7 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
                     obstacle.setPlayerCol(obstacle.getPlayerCol() + 1);
 
                     for(int i  = 0; i < 5; i ++) {
-                        enemies.get(i).entityMovement(playField);
+                        playField = enemies.get(i).entityMovement(playField);
                     }
                 }
                 else if(playField[obstacle.getPlayerRow()][obstacle.getPlayerCol() + 1] == 6){
@@ -406,7 +405,7 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
                     obstacle.setPlayerRow(obstacle.getPlayerRow() + 1);
 
                     for(int i  = 0; i < 5; i ++) {
-                        enemies.get(i).entityMovement(playField);
+                        playField = enemies.get(i).entityMovement(playField);
                     }
                 }
                 else if(playField[obstacle.getPlayerRow() + 1 ][obstacle.getPlayerCol()] == 6){
@@ -426,7 +425,7 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
                     play.compareScore();
 
                     for(int i  = 0; i < 5; i ++) {
-                        enemies.get(i).entityMovement(playField);
+                        playField = enemies.get(i).entityMovement(playField);
                     }
                 }
                 else if(playField[obstacle.getPlayerRow() - 2 ][obstacle.getPlayerCol()] == 6){
@@ -447,7 +446,7 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
                     play.compareScore();
 
                     for(int i  = 0; i < 5; i ++) {
-                        enemies.get(i).entityMovement(playField);
+                        playField = enemies.get(i).entityMovement(playField);
                     }
                 }
                 else if(playField[obstacle.getPlayerRow()][obstacle.getPlayerCol() - 2] == 6){
@@ -468,7 +467,7 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
                     play.compareScore();
 
                     for(int i  = 0; i < 5; i ++) {
-                        enemies.get(i).entityMovement(playField);
+                        playField = enemies.get(i).entityMovement(playField);
                     }
                 }
                 else if(playField[obstacle.getPlayerRow()][obstacle.getPlayerCol() + 2] == 6){
@@ -483,22 +482,14 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
                 play.nullScore();
             }
 
-            //each time the player move, entities try to move
-
             if(obstacle.getPlayerRow() == 20){
                 obstacle.generateMore();
             }
-            //in case dash happens on row 19
+            //in case dash happens onto row 19
             //and two extra rows need to be generated
             else if(obstacle.getPlayerRow() == 19){
                 obstacle.generateMore();
                 obstacle.generateMore();
-                for(int i  = 0; i < 5; i ++) {
-                    int entRow = enemies.get(i).getRow();
-                    enemies.get(i).setRow(entRow - 1);
-                    playField[enemies.get(i).getRow()][enemies.get(i).getCol()] = 6;
-                    playField[enemies.get(i).getRow() + 1][enemies.get(i).getCol()] = 7;
-                }
             }
         }
         //inputs for the name screen, so you can have a String name
