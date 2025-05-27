@@ -85,24 +85,6 @@ public class Obstacles {
         }
     }
 
-    public void countEntities(int[][] play){
-        int count = 0;
-        for(int row = 0; row < play.length; row ++){
-            for(int col = 0; col < play[0].length; col ++){
-                if(play[row][col] == ENEMY){
-                    count ++;
-                    if(row >=  25){
-                        enemies.remove(count);
-                    }
-                    }
-                }
-            }
-        if(count <= 4){
-            Entity newEntity = new Entity(5,30);
-            enemies.add(newEntity);
-            play[5][30] = ENEMY;
-        }
-    }
 
     //GETTERS AND SETTERS
     public int[][] exportField() {
@@ -122,9 +104,6 @@ public class Obstacles {
     }
     public ArrayList<Entity> importEntities(){
         return enemies;
-    }
-    public void getThemBack(ArrayList<Entity> enemy){
-        enemies = enemy;
     }
 
     //USED FOR GENERATING THE FIELD, CHECKS FOR ROAD NEAR ALREADY EXISTING ROAD

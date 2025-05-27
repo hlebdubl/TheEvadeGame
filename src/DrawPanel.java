@@ -348,13 +348,16 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
                     playField[obstacle.getPlayerRow() - 1][obstacle.getPlayerCol()] = 5;
                     playField[obstacle.getPlayerRow()][obstacle.getPlayerCol()] = 4;
                     obstacle.setPlayerRow(obstacle.getPlayerRow() - 1);
+
+                    for(int i  = 0; i < 5; i ++) {
+                        enemies.get(i).entityMovement(playField);
+
+                    }
                 }
                 else if(playField[obstacle.getPlayerRow() - 1 ][obstacle.getPlayerCol()] == 6){
                     reset();
                 }
-                for(int i  = 0; i < 5; i ++) {
-                    enemies.get(i).entityMovement(playField);
-                }
+
             }
             //go left
             else if (keyCode == KeyEvent.VK_A && obstacle.getPlayerCol() != 0) {
@@ -363,13 +366,15 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
                     playField[obstacle.getPlayerRow()][obstacle.getPlayerCol() - 1] = 5;
                     playField[obstacle.getPlayerRow()][obstacle.getPlayerCol()] = 4;
                     obstacle.setPlayerCol(obstacle.getPlayerCol() - 1);
+
+                    for(int i  = 0; i < 5; i ++) {
+                        enemies.get(i).entityMovement(playField);
+                    }
                 }
                 else if(playField[obstacle.getPlayerRow()][obstacle.getPlayerCol() - 1] == 6){
                     reset();
                 }
-                for(int i  = 0; i < 5; i ++) {
-                    enemies.get(i).entityMovement(playField);
-                }
+
             }
             //go right
             else if (keyCode == KeyEvent.VK_D && obstacle.getPlayerCol() != 59) {
@@ -378,13 +383,15 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
                     playField[obstacle.getPlayerRow()][obstacle.getPlayerCol() + 1] = 5;
                     playField[obstacle.getPlayerRow()][obstacle.getPlayerCol()] = 4;
                     obstacle.setPlayerCol(obstacle.getPlayerCol() + 1);
+
+                    for(int i  = 0; i < 5; i ++) {
+                        enemies.get(i).entityMovement(playField);
+                    }
                 }
                 else if(playField[obstacle.getPlayerRow()][obstacle.getPlayerCol() + 1] == 6){
                     reset();
                 }
-                for(int i  = 0; i < 5; i ++) {
-                    enemies.get(i).entityMovement(playField);
-                }
+
             }
             //go down
             else if (keyCode == KeyEvent.VK_S && obstacle.getPlayerRow() != 29) {
@@ -397,11 +404,13 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
                     playField[obstacle.getPlayerRow() + 1][obstacle.getPlayerCol()] = 5;
                     playField[obstacle.getPlayerRow()][obstacle.getPlayerCol()] = 4;
                     obstacle.setPlayerRow(obstacle.getPlayerRow() + 1);
+
+                    for(int i  = 0; i < 5; i ++) {
+                        enemies.get(i).entityMovement(playField);
+                    }
                 }
                 else if(playField[obstacle.getPlayerRow() + 1 ][obstacle.getPlayerCol()] == 6){
                     reset();
-                } for(int i  = 0; i < 5; i ++) {
-                    enemies.get(i).entityMovement(playField);
                 }
 
             }
@@ -416,13 +425,14 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
 
                     play.compareScore();
 
+                    for(int i  = 0; i < 5; i ++) {
+                        enemies.get(i).entityMovement(playField);
+                    }
                 }
                 else if(playField[obstacle.getPlayerRow() - 2 ][obstacle.getPlayerCol()] == 6){
                     reset();
                 }
-                for(int i  = 0; i < 5; i ++) {
-                    enemies.get(i).entityMovement(playField);
-                }
+
             }
             //dash left
             else if (keyCode == KeyEvent.VK_E && obstacle.getPlayerCol() > 1) {
@@ -435,13 +445,15 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
                     score -= 10;
 
                     play.compareScore();
+
+                    for(int i  = 0; i < 5; i ++) {
+                        enemies.get(i).entityMovement(playField);
+                    }
                 }
                 else if(playField[obstacle.getPlayerRow()][obstacle.getPlayerCol() - 2] == 6){
                     reset();
                 }
-                for(int i  = 0; i < 5; i ++) {
-                    enemies.get(i).entityMovement(playField);
-                }
+
             }
             //dash right
             else if (keyCode == KeyEvent.VK_Z && obstacle.getPlayerCol() < 58) {
@@ -454,13 +466,15 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
                     score -= 10;
 
                     play.compareScore();
+
+                    for(int i  = 0; i < 5; i ++) {
+                        enemies.get(i).entityMovement(playField);
+                    }
                 }
                 else if(playField[obstacle.getPlayerRow()][obstacle.getPlayerCol() + 2] == 6){
                     reset();
                 }
-                for(int i  = 0; i < 5; i ++) {
-                    enemies.get(i).entityMovement(playField);
-                }
+
             }
             //generates new lines once the player steps on row 20
             //Ensuring score stays at 0 or above
@@ -468,9 +482,6 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
                 score = 0;
                 play.nullScore();
             }
-
-            obstacle.countEntities(playField);
-            obstacle.getThemBack(enemies);
 
             //each time the player move, entities try to move
 
@@ -482,6 +493,12 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
             else if(obstacle.getPlayerRow() == 19){
                 obstacle.generateMore();
                 obstacle.generateMore();
+                for(int i  = 0; i < 5; i ++) {
+                    int entRow = enemies.get(i).getRow();
+                    enemies.get(i).setRow(entRow - 1);
+                    playField[enemies.get(i).getRow()][enemies.get(i).getCol()] = 6;
+                    playField[enemies.get(i).getRow() + 1][enemies.get(i).getCol()] = 7;
+                }
             }
         }
         //inputs for the name screen, so you can have a String name
@@ -491,7 +508,7 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
                 name += toAdd;
             }
             if(keyCode == KeyEvent.VK_BACK_SPACE && !name.isEmpty()){
-                name = name.substring(0, name.length() - 1);
+                name = name.substring(0, name.length() + 1);
             }
         }
     }
