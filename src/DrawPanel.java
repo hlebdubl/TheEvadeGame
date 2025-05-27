@@ -507,10 +507,13 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
     }
 
     public void reset(){
+
+        obstacle = new Obstacles();
         obstacle.initialField();
         obstacle.setPlayerRow(29);
         obstacle.setPlayerCol(32);
         score = 0;
+        playField = obstacle.exportField();
         enemies = obstacle.importEntities();
 
     }
