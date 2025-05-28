@@ -9,7 +9,7 @@ public class Obstacles {
     private final int ROAD = 4;
     private final int PLAYER = 5;
     private final int ENEMY = 6;
-    private final int RAD = 7;
+    private final int SHOOTER = 8;
     private int playerRow = 29;
     private int playerCol = 32;
     private ArrayList<Entity> enemies = new ArrayList<Entity>();
@@ -40,6 +40,9 @@ public class Obstacles {
                 } else if (nextBlock == 4) {
                     layout[row][col] = ROAD;
                 }
+
+                layout[5][30] = SHOOTER;
+
                 layout[15][30] = ENEMY;
                 layout[20][45] = ENEMY;
                 layout[25][10] = ENEMY;
@@ -47,6 +50,7 @@ public class Obstacles {
                 layout[20][30] = ENEMY;
                 layout[15][50] = ENEMY;
 
+                Shooter shoot = new Shooter(5,30);
                 Entity entityOne = new Entity(15,30);
                 Entity entityTwo = new Entity(20,45);
                 Entity entityThree = new Entity(25,10);
@@ -59,6 +63,7 @@ public class Obstacles {
                 enemies.add(entityFour);
                 enemies.add(entityFive);
                 enemies.add(entitySix);
+                enemies.add(shoot);
             }
         }
     }
@@ -86,7 +91,7 @@ public class Obstacles {
                 }
             }
             playerRow ++;
-            for(int i = 0; i < 6; i ++){
+            for(int i = 0; i < 7; i ++){
                 enemies.get(i).setRow(enemies.get(i).getRow() + 1);
             }
         }

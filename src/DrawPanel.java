@@ -144,12 +144,17 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
                     else if (playField[r][c] == 6){
                         g2.setColor(Color.WHITE);
                         g2.fillRect(x, y, 30, 30);
-                        g2.setColor(Color.WHITE);
+                        g2.setColor(Color.BLACK);
                     }
                     else if (playField[r][c] == 7){
                         g2.setColor(Color.PINK);
                         g2.fillRect(x, y, 30, 30);
-                        g2.setColor(Color.PINK);
+                        g2.setColor(Color.BLACK);
+                    }
+                    else if(playField[r][c] == 8){
+                        g2.setColor(Color.CYAN);
+                        g2.fillRect(x,y,30,30);
+                        g2.setColor(Color.BLACK);
                     }
                     y += 30;
                 }
@@ -349,7 +354,7 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
                     playField[obstacle.getPlayerRow()][obstacle.getPlayerCol()] = 4;
                     obstacle.setPlayerRow(obstacle.getPlayerRow() - 1);
 
-                    for(int i  = 0; i < 6; i ++) {
+                    for(int i  = 0; i < 7; i ++) {
                         playField = enemies.get(i).entityMovement(playField);
                         playField = enemies.get(i).entityMovement(playField);
                     }
@@ -367,7 +372,7 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
                     playField[obstacle.getPlayerRow()][obstacle.getPlayerCol()] = 4;
                     obstacle.setPlayerCol(obstacle.getPlayerCol() - 1);
 
-                    for(int i  = 0; i < 6; i ++) {
+                    for(int i  = 0; i < 7; i ++) {
                         playField = enemies.get(i).entityMovement(playField);
                         playField = enemies.get(i).entityMovement(playField);
                     }
@@ -385,7 +390,7 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
                     playField[obstacle.getPlayerRow()][obstacle.getPlayerCol()] = 4;
                     obstacle.setPlayerCol(obstacle.getPlayerCol() + 1);
 
-                    for(int i  = 0; i < 6; i ++) {
+                    for(int i  = 0; i < 7; i ++) {
                         playField = enemies.get(i).entityMovement(playField);
                         playField = enemies.get(i).entityMovement(playField);
                     }
@@ -407,7 +412,7 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
                     playField[obstacle.getPlayerRow()][obstacle.getPlayerCol()] = 4;
                     obstacle.setPlayerRow(obstacle.getPlayerRow() + 1);
 
-                    for(int i  = 0; i < 6; i ++) {
+                    for(int i  = 0; i < 7; i ++) {
                         playField = enemies.get(i).entityMovement(playField);
                         playField = enemies.get(i).entityMovement(playField);
                     }
@@ -428,7 +433,7 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
 
                     play.compareScore();
 
-                    for(int i  = 0; i < 6; i ++) {
+                    for(int i  = 0; i < 7; i ++) {
                         playField = enemies.get(i).entityMovement(playField);
                         playField = enemies.get(i).entityMovement(playField);
                     }
@@ -450,7 +455,7 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
 
                     play.compareScore();
 
-                    for(int i  = 0; i < 6; i ++) {
+                    for(int i  = 0; i < 7; i ++) {
                         playField = enemies.get(i).entityMovement(playField);
                         playField = enemies.get(i).entityMovement(playField);
                     }
@@ -472,7 +477,7 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
 
                     play.compareScore();
 
-                    for(int i  = 0; i < 6; i ++) {
+                    for(int i  = 0; i < 7; i ++) {
                         playField = enemies.get(i).entityMovement(playField);
                         playField = enemies.get(i).entityMovement(playField);
                     }
