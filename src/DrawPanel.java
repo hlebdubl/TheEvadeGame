@@ -349,7 +349,7 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
                     playField[obstacle.getPlayerRow()][obstacle.getPlayerCol()] = 4;
                     obstacle.setPlayerRow(obstacle.getPlayerRow() - 1);
 
-                    for(int i  = 0; i < 5; i ++) {
+                    for(int i  = 0; i < 6; i ++) {
                         playField = enemies.get(i).entityMovement(playField);
                         playField = enemies.get(i).entityMovement(playField);
                     }
@@ -367,7 +367,7 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
                     playField[obstacle.getPlayerRow()][obstacle.getPlayerCol()] = 4;
                     obstacle.setPlayerCol(obstacle.getPlayerCol() - 1);
 
-                    for(int i  = 0; i < 5; i ++) {
+                    for(int i  = 0; i < 6; i ++) {
                         playField = enemies.get(i).entityMovement(playField);
                         playField = enemies.get(i).entityMovement(playField);
                     }
@@ -385,7 +385,7 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
                     playField[obstacle.getPlayerRow()][obstacle.getPlayerCol()] = 4;
                     obstacle.setPlayerCol(obstacle.getPlayerCol() + 1);
 
-                    for(int i  = 0; i < 5; i ++) {
+                    for(int i  = 0; i < 6; i ++) {
                         playField = enemies.get(i).entityMovement(playField);
                         playField = enemies.get(i).entityMovement(playField);
                     }
@@ -407,7 +407,7 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
                     playField[obstacle.getPlayerRow()][obstacle.getPlayerCol()] = 4;
                     obstacle.setPlayerRow(obstacle.getPlayerRow() + 1);
 
-                    for(int i  = 0; i < 5; i ++) {
+                    for(int i  = 0; i < 6; i ++) {
                         playField = enemies.get(i).entityMovement(playField);
                         playField = enemies.get(i).entityMovement(playField);
                     }
@@ -428,7 +428,7 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
 
                     play.compareScore();
 
-                    for(int i  = 0; i < 5; i ++) {
+                    for(int i  = 0; i < 6; i ++) {
                         playField = enemies.get(i).entityMovement(playField);
                         playField = enemies.get(i).entityMovement(playField);
                     }
@@ -450,7 +450,7 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
 
                     play.compareScore();
 
-                    for(int i  = 0; i < 5; i ++) {
+                    for(int i  = 0; i < 6; i ++) {
                         playField = enemies.get(i).entityMovement(playField);
                         playField = enemies.get(i).entityMovement(playField);
                     }
@@ -472,7 +472,7 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
 
                     play.compareScore();
 
-                    for(int i  = 0; i < 5; i ++) {
+                    for(int i  = 0; i < 6; i ++) {
                         playField = enemies.get(i).entityMovement(playField);
                         playField = enemies.get(i).entityMovement(playField);
                     }

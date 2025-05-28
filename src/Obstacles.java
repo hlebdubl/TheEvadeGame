@@ -45,17 +45,20 @@ public class Obstacles {
                 layout[25][10] = ENEMY;
                 layout[5][5] = ENEMY;
                 layout[20][30] = ENEMY;
+                layout[15][50] = ENEMY;
 
                 Entity entityOne = new Entity(15,30);
                 Entity entityTwo = new Entity(20,45);
                 Entity entityThree = new Entity(25,10);
                 Entity entityFour = new Entity(5,5);
                 Entity entityFive = new Entity(20,30);
+                Entity entitySix = new Entity(15,50);
                 enemies.add(entityOne);
                 enemies.add(entityTwo);
                 enemies.add(entityThree);
                 enemies.add(entityFour);
                 enemies.add(entityFive);
+                enemies.add(entitySix);
             }
         }
     }
@@ -83,7 +86,7 @@ public class Obstacles {
                 }
             }
             playerRow ++;
-            for(int i = 0; i < 5; i ++){
+            for(int i = 0; i < 6; i ++){
                 enemies.get(i).setRow(enemies.get(i).getRow() + 1);
             }
         }
