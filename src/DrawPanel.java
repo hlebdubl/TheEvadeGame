@@ -351,6 +351,7 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
 
                     for(int i  = 0; i < 5; i ++) {
                         playField = enemies.get(i).entityMovement(playField);
+                        playField = enemies.get(i).entityMovement(playField);
                     }
                 }
                 else if(playField[obstacle.getPlayerRow() - 1 ][obstacle.getPlayerCol()] == 6){
@@ -368,6 +369,7 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
 
                     for(int i  = 0; i < 5; i ++) {
                         playField = enemies.get(i).entityMovement(playField);
+                        playField = enemies.get(i).entityMovement(playField);
                     }
                 }
                 else if(playField[obstacle.getPlayerRow()][obstacle.getPlayerCol() - 1] == 6){
@@ -384,6 +386,7 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
                     obstacle.setPlayerCol(obstacle.getPlayerCol() + 1);
 
                     for(int i  = 0; i < 5; i ++) {
+                        playField = enemies.get(i).entityMovement(playField);
                         playField = enemies.get(i).entityMovement(playField);
                     }
                 }
@@ -406,6 +409,7 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
 
                     for(int i  = 0; i < 5; i ++) {
                         playField = enemies.get(i).entityMovement(playField);
+                        playField = enemies.get(i).entityMovement(playField);
                     }
                 }
                 else if(playField[obstacle.getPlayerRow() + 1 ][obstacle.getPlayerCol()] == 6){
@@ -425,6 +429,7 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
                     play.compareScore();
 
                     for(int i  = 0; i < 5; i ++) {
+                        playField = enemies.get(i).entityMovement(playField);
                         playField = enemies.get(i).entityMovement(playField);
                     }
                 }
@@ -447,6 +452,7 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
 
                     for(int i  = 0; i < 5; i ++) {
                         playField = enemies.get(i).entityMovement(playField);
+                        playField = enemies.get(i).entityMovement(playField);
                     }
                 }
                 else if(playField[obstacle.getPlayerRow()][obstacle.getPlayerCol() - 2] == 6){
@@ -468,6 +474,7 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
 
                     for(int i  = 0; i < 5; i ++) {
                         playField = enemies.get(i).entityMovement(playField);
+                        playField = enemies.get(i).entityMovement(playField);
                     }
                 }
                 else if(playField[obstacle.getPlayerRow()][obstacle.getPlayerCol() + 2] == 6){
@@ -483,11 +490,13 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
             }
 
             if(obstacle.getPlayerRow() == 20){
+                obstacle.changeField(playField);
                 obstacle.generateMore();
             }
             //in case dash happens onto row 19
             //and two extra rows need to be generated
             else if(obstacle.getPlayerRow() == 19){
+                obstacle.changeField(playField);
                 obstacle.generateMore();
                 obstacle.generateMore();
             }

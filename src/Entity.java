@@ -20,7 +20,10 @@ public class Entity {
     public int[][] entityMovement(int[][] field){
         int choice = (int) (Math.random() * 5 + 1);
 
-        if(row >= 24){
+        if (row >= 25){
+            choice = 6;
+        }
+        else if(row >= 22){
             choice = 3;
         }
 
@@ -41,6 +44,12 @@ public class Entity {
         else if(choice == 4 && col != 59){
             field[row][col]  = 7;
             col ++;
+            field[row][col] = 6;
+        }
+        else if (choice == 6){
+            field[row][col] = 7;
+            field[row- 1][col] = 7;
+            row -=2;
             field[row][col] = 6;
         }
         else if(col != 1){

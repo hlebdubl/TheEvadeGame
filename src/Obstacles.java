@@ -83,6 +83,9 @@ public class Obstacles {
                 }
             }
             playerRow ++;
+            for(int i = 0; i < 5; i ++){
+                enemies.get(i).setRow(enemies.get(i).getRow() + 1);
+            }
         }
     }
 
@@ -90,6 +93,9 @@ public class Obstacles {
     //GETTERS AND SETTERS
     public int[][] exportField() {
         return layout;
+    }
+    public void changeField(int[][] play){
+        layout = play;
     }
     public int getPlayerRow() {
         return playerRow;
