@@ -7,9 +7,6 @@ public class Entity {
         this.col = col;
     }
 
-    public int getCol() {
-        return col;
-    }
     public int getRow() {
         return row;
     }
