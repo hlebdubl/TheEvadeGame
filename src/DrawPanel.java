@@ -357,6 +357,11 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
                     for(int i  = 0; i < 7; i ++) {
                         playField = enemies.get(i).entityMovement(playField);
                         if(playField[obstacle.getPlayerRow()][obstacle.getPlayerCol()] == 6){
+                            try {
+                                Thread.sleep(1000);
+                            } catch (InterruptedException ex) {
+                                throw new RuntimeException(ex);
+                            }
                             reset();
                         }
                         playField = enemies.get(i).entityMovement(playField);
@@ -378,6 +383,11 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
                     for(int i  = 0; i < 7; i ++) {
                         playField = enemies.get(i).entityMovement(playField);
                         if(playField[obstacle.getPlayerRow()][obstacle.getPlayerCol()] == 6){
+                            try {
+                                Thread.sleep(1000);
+                            } catch (InterruptedException ex) {
+                                throw new RuntimeException(ex);
+                            }
                             reset();
                         }
                         playField = enemies.get(i).entityMovement(playField);
@@ -399,6 +409,11 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
                     for(int i  = 0; i < 7; i ++) {
                         playField = enemies.get(i).entityMovement(playField);
                         if(playField[obstacle.getPlayerRow()][obstacle.getPlayerCol()] == 6){
+                            try {
+                                Thread.sleep(1000);
+                            } catch (InterruptedException ex) {
+                                throw new RuntimeException(ex);
+                            }
                             reset();
                         }
                         playField = enemies.get(i).entityMovement(playField);
@@ -424,6 +439,11 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
                     for(int i  = 0; i < 7; i ++) {
                         playField = enemies.get(i).entityMovement(playField);
                         if(playField[obstacle.getPlayerRow()][obstacle.getPlayerCol()] == 6){
+                            try {
+                                Thread.sleep(1000);
+                            } catch (InterruptedException ex) {
+                                throw new RuntimeException(ex);
+                            }
                             reset();
                         }
                         playField = enemies.get(i).entityMovement(playField);
@@ -448,6 +468,11 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
                     for(int i  = 0; i < 7; i ++) {
                         playField = enemies.get(i).entityMovement(playField);
                         if(playField[obstacle.getPlayerRow()][obstacle.getPlayerCol()] == 6){
+                            try {
+                                Thread.sleep(1000);
+                            } catch (InterruptedException ex) {
+                                throw new RuntimeException(ex);
+                            }
                             reset();
                         }
                         playField = enemies.get(i).entityMovement(playField);
@@ -473,6 +498,11 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
                     for(int i  = 0; i < 7; i ++) {
                         playField = enemies.get(i).entityMovement(playField);
                         if(playField[obstacle.getPlayerRow()][obstacle.getPlayerCol()] == 6){
+                            try {
+                                Thread.sleep(1000);
+                            } catch (InterruptedException ex) {
+                                throw new RuntimeException(ex);
+                            }
                             reset();
                         }
                         playField = enemies.get(i).entityMovement(playField);
@@ -498,6 +528,11 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
                     for(int i  = 0; i < 7; i ++) {
                         playField = enemies.get(i).entityMovement(playField);
                         if(playField[obstacle.getPlayerRow()][obstacle.getPlayerCol()] == 6){
+                            try {
+                                Thread.sleep(1000);
+                            } catch (InterruptedException ex) {
+                                throw new RuntimeException(ex);
+                            }
                             reset();
                         }
                         playField = enemies.get(i).entityMovement(playField);
