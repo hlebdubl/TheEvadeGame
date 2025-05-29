@@ -1,6 +1,10 @@
+import java.util.ArrayList;
+
 public class Shooter extends Entity {
     private int row;
     private int col;
+    private ArrayList<Projectile> projectiles = new ArrayList<Projectile>();
+
 
     Shooter(int row, int col) {
         super(row, col);
@@ -12,10 +16,13 @@ public class Shooter extends Entity {
     public int getRow(){
         return row;
     }
-
+    public ArrayList getProj(){
+        return projectiles;
+    }
 
     public void shoot(){
-
+        Projectile newShot = new Projectile(row * 30,col * 30);
+        projectiles.add(newShot);
     }
 
     public int[][] entityMovement(int[][] field){

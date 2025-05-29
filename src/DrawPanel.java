@@ -21,6 +21,7 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
     private int score;
     private String name;
     private ArrayList<Entity> enemies = new ArrayList<Entity>();
+    private ArrayList<Projectile> projectiles = new ArrayList<Projectile>();
 
     public DrawPanel() {
         this.addMouseListener(this);
