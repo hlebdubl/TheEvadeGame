@@ -26,33 +26,44 @@ public class Entity {
         else if(row >= 22){
             choice = 3;
         }
-
-        if(row <= 5){
+        else if(row <= 5){
             choice = 1;
         }
 
+        else if (col >= 58){
+            choice = 0;
+        }
+        else if (col <= 3){
+            choice = 4;
+        }
+
+        //down 1
         if((choice == 1 || choice == 2 )){
             field[row][col]  = 7;
             row ++;
             field[row][col] = 6;
         }
+        //up 1
         else if(choice == 3){
             field[row][col]  = 7;
             row --;
             field[row][col] = 6;
         }
-        else if(choice == 4 && col != 59){
+        //right
+        else if(choice == 4){
             field[row][col]  = 7;
             col ++;
             field[row][col] = 6;
         }
+        //two up
         else if (choice == 6){
             field[row][col] = 7;
             field[row- 1][col] = 7;
             row -=2;
             field[row][col] = 6;
         }
-        else if(col != 1){
+        //left
+        else {
             field[row][col]  = 7;
             col --;
             field[row][col] = 6;
