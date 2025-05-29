@@ -50,7 +50,7 @@ public class Obstacles {
                 layout[20][30] = ENEMY;
                 layout[15][50] = ENEMY;
 
-                Entity shoot = new Shooter(5,30);
+                Shooter shoot = new Shooter(5,30);
                 Entity entityOne = new Entity(15,30);
                 Entity entityTwo = new Entity(20,45);
                 Entity entityThree = new Entity(25,10);

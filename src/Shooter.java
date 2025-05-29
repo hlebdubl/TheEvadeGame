@@ -6,6 +6,13 @@ public class Shooter extends Entity {
         super(row, col);
     }
 
+    public void setRow(int row){
+        this.row = row;
+    }
+    public int getRow(){
+        return row;
+    }
+
 
     public void shoot(){
 
@@ -34,34 +41,33 @@ public class Shooter extends Entity {
 
         //down 1
         if((choice == 1 || choice == 2 )){
-            field[row][col]  = 7;
+            field[row][col]  = field[row + 1][col];
             row ++;
-            field[row][col] = 6;
+            field[row][col] = 8;
         }
         //up 1
         else if(choice == 3){
-            field[row][col]  = 7;
+            field[row][col]  = field[row - 1][col];
             row --;
-            field[row][col] = 6;
+            field[row][col] = 8;
         }
         //right
         else if(choice == 4){
-            field[row][col]  = 7;
+            field[row][col]  = field[row][col + 1];
             col ++;
-            field[row][col] = 6;
+            field[row][col] = 8;
         }
         //two up
         else if (choice == 6){
-            field[row][col] = 7;
-            field[row- 1][col] = 7;
+            field[row][col]  = field[row - 2][col];
             row -=2;
-            field[row][col] = 6;
+            field[row][col] = 8;
         }
         //left
         else {
-            field[row][col]  = 7;
+            field[row][col]  = field[row][col - 1];
             col --;
-            field[row][col] = 6;
+            field[row][col] = 8;
         }
 
         return field;
