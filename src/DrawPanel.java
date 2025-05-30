@@ -171,8 +171,8 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
             g.fillRect(0,0,2000,2000);
 
             g.setColor(Color.PINK);
-            g.drawRect(200,100,125,125);
-            g.drawString("Tip 1: Go up",225,150);
+            g.drawRect(200,100,250,125);
+            g.drawString("Tip 1: You can name yourself",225,150);
 
             g.drawRect(800,100,175,125);
             g.drawString("Tip 2: Don't Dash Too Much", 820,150);
@@ -181,28 +181,28 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
             g.drawString("Tip 3: Go up = Score up", 305,555);
 
             g.drawRect(500,300,175,125);
-            g.drawString("Tip 4: Figure it out", 520,355);
+            g.drawString("Tip 4: Entities move twice ", 520,355);
 
             g.drawRect(1200,750,175,125);
-            g.drawString("Tip 5: Do some actual work", 1215,800);
+            g.drawString("Tip 5: Can't move on pink", 1215,800);
 
-            g.drawRect(1500,800,200,150);
-            g.drawString("Tip 6: Stop acting like I made this", 1515,850);
+            g.drawRect(1500,800,300,150);
+            g.drawString("Tip 6: You die if caught between entity movement", 1515,850);
 
-            g.drawRect(1300,500,175,125);
-            g.drawString("Tip 7: Idk", 1325,550);
+            g.drawRect(1300,500,225,125);
+            g.drawString("Tip 7: Use dashes to dodge entities ", 1325,550);
 
-            g.drawRect(950,350,175,125);
-            g.drawString("Tip 8: No tips", 975,400);
+            g.drawRect(950,350,200,125);
+            g.drawString("Tip 8: Don't get hit by a bullet ", 975,400);
 
-            g.drawRect(800,800,200,175);
-            g.drawString("Tip 9: What's a tip", 810,850);
+            g.drawRect(800,800,225,125);
+            g.drawString("Tip 9: Sometimes you just gotta restart ", 810,850);
 
-            g.drawRect(500,500,175,125);
-            g.drawString("Tip 10: Lowkey go up tbh", 510,550);
+            g.drawRect(500,500,200,125);
+            g.drawString("Tip 10: Don't touch the entities?!", 510,550);
 
             g.drawRect(700,650,175,125);
-            g.drawString("Tip Final: Gurt", 725,700);
+            g.drawString("Tip Final: Go up!", 725,700);
 
             Font currentFont = g.getFont();
             Font biggerFont = currentFont.deriveFont(currentFont.getSize() * 4f);
