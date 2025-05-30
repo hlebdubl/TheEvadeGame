@@ -41,7 +41,7 @@ public class Obstacles {
                     layout[row][col] = ROAD;
                 }
 
-                layout[5][30] = SHOOTER;
+                layout[0][0] = SHOOTER;
 
                 layout[15][30] = ENEMY;
                 layout[20][45] = ENEMY;
@@ -50,7 +50,7 @@ public class Obstacles {
                 layout[20][30] = ENEMY;
                 layout[15][50] = ENEMY;
 
-                Shooter shoot = new Shooter(5,30);
+                Shooter shoot = new Shooter(0,0);
                 Entity entityOne = new Entity(15,30);
                 Entity entityTwo = new Entity(20,45);
                 Entity entityThree = new Entity(25,10);
