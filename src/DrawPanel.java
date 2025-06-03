@@ -518,7 +518,7 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
                 name += toAdd;
             }
             if(keyCode == KeyEvent.VK_BACK_SPACE && !name.isEmpty()){
-                name = name.substring(0, name.length() + 1);
+                name = name.substring(0, name.length() - 1);
             }
         }
     }
