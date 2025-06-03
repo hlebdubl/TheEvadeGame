@@ -13,6 +13,7 @@ public class Obstacles {
     private int playerRow = 29;
     private int playerCol = 32;
     private ArrayList<Entity> enemies = new ArrayList<Entity>();
+    private Shooter shoot;
 
 
     //Constructor, sets up a new field when created
@@ -50,7 +51,7 @@ public class Obstacles {
                 layout[20][30] = ENEMY;
                 layout[15][50] = ENEMY;
 
-                Shooter shoot = new Shooter(0,0);
+                shoot = new Shooter(0,0);
                 Entity entityOne = new Entity(15,30);
                 Entity entityTwo = new Entity(20,45);
                 Entity entityThree = new Entity(25,10);
@@ -63,7 +64,6 @@ public class Obstacles {
                 enemies.add(entityFour);
                 enemies.add(entityFive);
                 enemies.add(entitySix);
-                enemies.add(shoot);
             }
         }
     }
@@ -101,6 +101,9 @@ public class Obstacles {
     //GETTERS AND SETTERS
     public int[][] exportField() {
         return layout;
+    }
+    public Shooter getShoot(){
+        return shoot;
     }
     public void changeField(int[][] play){
         layout = play;

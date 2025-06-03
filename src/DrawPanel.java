@@ -38,7 +38,7 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
         name = play.getName();
 
         enemies = obstacle.importEntities();
-        shoot = (Shooter) enemies.getFirst();
+        shoot = obstacle.getShoot();
 
     }
 
