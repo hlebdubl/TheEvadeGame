@@ -25,7 +25,7 @@ public class Shooter extends Entity {
         projectiles.add(newShot);
     }
 
-    public int[][] entityMovement(int[][] field){
+    public int[][] shooterMovement(int[][] field){
 
         shoot();
 

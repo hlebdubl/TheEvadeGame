@@ -91,9 +91,10 @@ public class Obstacles {
                 }
             }
             playerRow ++;
-            for(int i = 0; i < 7; i ++){
+            for(int i = 0; i < 6; i ++){
                 enemies.get(i).setRow(enemies.get(i).getRow() + 1);
             }
+            shoot.setRow(shoot.getRow() + 1);
         }
     }
 

@@ -359,8 +359,8 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
 
                     for(int i  = 0; i < 6; i ++) {
 
-                        if( i < 2){
-                            shoot.entityMovement(playField);
+                        if( i == 0){
+                            shoot.shooterMovement(playField);
                             projectiles = shoot.updateProjectiles();
                         }
 
@@ -391,8 +391,8 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
 
                     for(int i  = 0; i < 6; i ++) {
 
-                        if( i < 2){
-                            shoot.entityMovement(playField);
+                        if( i == 0){
+                            shoot.shooterMovement(playField);
                             projectiles = shoot.updateProjectiles();
                         }
 
@@ -423,8 +423,8 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
 
                     for(int i  = 0; i < 6; i ++) {
 
-                        if( i < 2){
-                            shoot.entityMovement(playField);
+                        if( i == 0){
+                            shoot.shooterMovement(playField);
                             projectiles = shoot.updateProjectiles();
                         }
 
@@ -459,8 +459,8 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
 
                     for(int i  = 0; i < 6; i ++) {
 
-                        if( i < 2){
-                            shoot.entityMovement(playField);
+                        if( i == 0){
+                            shoot.shooterMovement(playField);
                             projectiles = shoot.updateProjectiles();
                         }
 
@@ -494,8 +494,8 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
 
                     for(int i  = 0; i < 6; i ++) {
 
-                        if( i < 2){
-                            shoot.entityMovement(playField);
+                        if( i == 0){
+                            shoot.shooterMovement(playField);
                             projectiles = shoot.updateProjectiles();
                         }
 
@@ -530,8 +530,8 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
 
                     for(int i  = 0; i < 6; i ++) {
 
-                        if( i < 2){
-                            shoot.entityMovement(playField);
+                        if( i == 0){
+                            shoot.shooterMovement(playField);
                             projectiles = shoot.updateProjectiles();
                         }
 
@@ -566,8 +566,8 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
 
                     for(int i  = 0; i < 6; i ++) {
 
-                        if( i < 2){
-                            shoot.entityMovement(playField);
+                        if( i == 0){
+                            shoot.shooterMovement(playField);
                             projectiles = shoot.updateProjectiles();
                         }
 
