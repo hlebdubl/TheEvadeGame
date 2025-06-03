@@ -15,6 +15,7 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
     private boolean credits = false;
     private boolean tips = false;
     private boolean nameScreen = false;
+    private boolean moved = false;
     private int[][] playField;
     private Player play;
     private Obstacles obstacle;
@@ -356,30 +357,11 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
                     playField[obstacle.getPlayerRow() - 1][obstacle.getPlayerCol()] = 5;
                     playField[obstacle.getPlayerRow()][obstacle.getPlayerCol()] = 4;
                     obstacle.setPlayerRow(obstacle.getPlayerRow() - 1);
-
-                    for(int i  = 0; i < 6; i ++) {
-
-                        if( i == 0){
-                            shoot.shooterMovement(playField);
-                            projectiles = shoot.updateProjectiles();
-                        }
-
-                        playField = enemies.get(i).entityMovement(playField);
-                        if(playField[obstacle.getPlayerRow()][obstacle.getPlayerCol()] == 6){
-                            try {
-                                Thread.sleep(1000);
-                            } catch (InterruptedException ex) {
-                                throw new RuntimeException(ex);
-                            }
-                            reset();
-                        }
-                        playField = enemies.get(i).entityMovement(playField);
-                    }
                 }
                 else if(playField[obstacle.getPlayerRow() - 1 ][obstacle.getPlayerCol()] == 6){
                     reset();
                 }
-
+                moved = true;
             }
             //go left
             else if (keyCode == KeyEvent.VK_A && obstacle.getPlayerCol() != 0) {
@@ -388,29 +370,11 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
                     playField[obstacle.getPlayerRow()][obstacle.getPlayerCol() - 1] = 5;
                     playField[obstacle.getPlayerRow()][obstacle.getPlayerCol()] = 4;
                     obstacle.setPlayerCol(obstacle.getPlayerCol() - 1);
-
-                    for(int i  = 0; i < 6; i ++) {
-
-                        if( i == 0){
-                            shoot.shooterMovement(playField);
-                            projectiles = shoot.updateProjectiles();
-                        }
-
-                        playField = enemies.get(i).entityMovement(playField);
-                        if(playField[obstacle.getPlayerRow()][obstacle.getPlayerCol()] == 6){
-                            try {
-                                Thread.sleep(1000);
-                            } catch (InterruptedException ex) {
-                                throw new RuntimeException(ex);
-                            }
-                            reset();
-                        }
-                        playField = enemies.get(i).entityMovement(playField);
-                    }
                 }
                 else if(playField[obstacle.getPlayerRow()][obstacle.getPlayerCol() - 1] == 6){
                     reset();
                 }
+                moved = true;
             }
             //go right
             else if (keyCode == KeyEvent.VK_D && obstacle.getPlayerCol() != 59) {
@@ -419,30 +383,11 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
                     playField[obstacle.getPlayerRow()][obstacle.getPlayerCol() + 1] = 5;
                     playField[obstacle.getPlayerRow()][obstacle.getPlayerCol()] = 4;
                     obstacle.setPlayerCol(obstacle.getPlayerCol() + 1);
-
-                    for(int i  = 0; i < 6; i ++) {
-
-                        if( i == 0){
-                            shoot.shooterMovement(playField);
-                            projectiles = shoot.updateProjectiles();
-                        }
-
-                        playField = enemies.get(i).entityMovement(playField);
-                        if(playField[obstacle.getPlayerRow()][obstacle.getPlayerCol()] == 6){
-                            try {
-                                Thread.sleep(1000);
-                            } catch (InterruptedException ex) {
-                                throw new RuntimeException(ex);
-                            }
-                            reset();
-                        }
-                        playField = enemies.get(i).entityMovement(playField);
-                    }
                 }
                 else if(playField[obstacle.getPlayerRow()][obstacle.getPlayerCol() + 1] == 6){
                     reset();
                 }
-
+                moved = true;
             }
             //go down
             else if (keyCode == KeyEvent.VK_S && obstacle.getPlayerRow() != 29) {
@@ -455,30 +400,11 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
                     playField[obstacle.getPlayerRow() + 1][obstacle.getPlayerCol()] = 5;
                     playField[obstacle.getPlayerRow()][obstacle.getPlayerCol()] = 4;
                     obstacle.setPlayerRow(obstacle.getPlayerRow() + 1);
-
-                    for(int i  = 0; i < 6; i ++) {
-
-                        if( i == 0){
-                            shoot.shooterMovement(playField);
-                            projectiles = shoot.updateProjectiles();
-                        }
-
-                        playField = enemies.get(i).entityMovement(playField);
-                        if(playField[obstacle.getPlayerRow()][obstacle.getPlayerCol()] == 6){
-                            try {
-                                Thread.sleep(1000);
-                            } catch (InterruptedException ex) {
-                                throw new RuntimeException(ex);
-                            }
-                            reset();
-                        }
-                        playField = enemies.get(i).entityMovement(playField);
-                    }
                 }
                 else if(playField[obstacle.getPlayerRow() + 1 ][obstacle.getPlayerCol()] == 6){
                     reset();
                 }
-
+                moved = true;
             }
             //dash up
             else if (keyCode == KeyEvent.VK_Q) {
@@ -490,29 +416,11 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
                     score -= 20;
 
                     play.compareScore();
-
-                    for(int i  = 0; i < 6; i ++) {
-
-                        if( i == 0){
-                            shoot.shooterMovement(playField);
-                            projectiles = shoot.updateProjectiles();
-                        }
-
-                        playField = enemies.get(i).entityMovement(playField);
-                        if(playField[obstacle.getPlayerRow()][obstacle.getPlayerCol()] == 6){
-                            try {
-                                Thread.sleep(1000);
-                            } catch (InterruptedException ex) {
-                                throw new RuntimeException(ex);
-                            }
-                            reset();
-                        }
-                        playField = enemies.get(i).entityMovement(playField);
-                    }
                 }
                 else if(playField[obstacle.getPlayerRow() - 2 ][obstacle.getPlayerCol()] == 6){
                     reset();
                 }
+                moved = true;
             }
             //dash left
             else if (keyCode == KeyEvent.VK_E && obstacle.getPlayerCol() > 1) {
@@ -525,29 +433,11 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
                     score -= 10;
 
                     play.compareScore();
-
-                    for(int i  = 0; i < 6; i ++) {
-
-                        if( i == 0){
-                            shoot.shooterMovement(playField);
-                            projectiles = shoot.updateProjectiles();
-                        }
-
-                        playField = enemies.get(i).entityMovement(playField);
-                        if(playField[obstacle.getPlayerRow()][obstacle.getPlayerCol()] == 6){
-                            try {
-                                Thread.sleep(1000);
-                            } catch (InterruptedException ex) {
-                                throw new RuntimeException(ex);
-                            }
-                            reset();
-                        }
-                        playField = enemies.get(i).entityMovement(playField);
-                    }
                 }
                 else if(playField[obstacle.getPlayerRow()][obstacle.getPlayerCol() - 2] == 6){
                     reset();
                 }
+                moved = true;
             }
             //dash right
             else if (keyCode == KeyEvent.VK_Z && obstacle.getPlayerCol() < 58) {
@@ -560,31 +450,35 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
                     score -= 10;
 
                     play.compareScore();
-
-                    for(int i  = 0; i < 6; i ++) {
-
-                        if( i == 0){
-                            shoot.shooterMovement(playField);
-                            projectiles = shoot.updateProjectiles();
-                        }
-
-                        playField = enemies.get(i).entityMovement(playField);
-                        if(playField[obstacle.getPlayerRow()][obstacle.getPlayerCol()] == 6){
-                            try {
-                                Thread.sleep(1000);
-                            } catch (InterruptedException ex) {
-                                throw new RuntimeException(ex);
-                            }
-                            reset();
-                        }
-                        playField = enemies.get(i).entityMovement(playField);
-                    }
                 }
                 else if(playField[obstacle.getPlayerRow()][obstacle.getPlayerCol() + 2] == 6){
                     reset();
                 }
-
+                moved = true;
             }
+            //Entity + Shooter movement
+            if(moved){
+                for(int i  = 0; i < 6; i ++) {
+
+                    if( i == 0){
+                        shoot.shooterMovement(playField);
+                        projectiles = shoot.updateProjectiles();
+                    }
+
+                    playField = enemies.get(i).entityMovement(playField);
+                    if(playField[obstacle.getPlayerRow()][obstacle.getPlayerCol()] == 6){
+                        try {
+                            Thread.sleep(1000);
+                        } catch (InterruptedException ex) {
+                            throw new RuntimeException(ex);
+                        }
+                        reset();
+                    }
+                    playField = enemies.get(i).entityMovement(playField);
+                }
+                moved = false;
+            }
+
             //Ensuring score stays at 0 or above
             if(score < 0){
                 score = 0;
