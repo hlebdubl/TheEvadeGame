@@ -16,16 +16,19 @@ public class Shooter extends Entity {
     public int getRow(){
         return row;
     }
-    public ArrayList getProj(){
+    public ArrayList updateProjectiles(){
         return projectiles;
     }
 
     public void shoot(){
-        Projectile newShot = new Projectile(row * 30,col * 30);
+        Projectile newShot = new Projectile(row * 30 + 5,col * 30 + 5);
         projectiles.add(newShot);
     }
 
     public int[][] entityMovement(int[][] field){
+
+        shoot();
+
 
         int choice = (int) (Math.random() * 5 + 1);
 

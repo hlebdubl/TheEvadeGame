@@ -20,6 +20,7 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
     private Obstacles obstacle;
     private int score;
     private String name;
+    private Shooter shoot;
     private ArrayList<Entity> enemies = new ArrayList<Entity>();
     private ArrayList<Projectile> projectiles = new ArrayList<Projectile>();
 
@@ -37,6 +38,7 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
         name = play.getName();
 
         enemies = obstacle.importEntities();
+        shoot = (Shooter) enemies.getFirst();
 
     }
 
@@ -550,6 +552,8 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
                 score = 0;
                 play.nullScore();
             }
+
+            shoot.updateProjectiles();
 
             if(obstacle.getPlayerRow() == 20){
                 obstacle.changeField(playField);
