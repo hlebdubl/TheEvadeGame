@@ -20,7 +20,7 @@ public class Player {
             bestScore = score;
         }
     }
-    //GETTERS
+    //Getters + Setters
     public int getScore(){
         return score;
     }

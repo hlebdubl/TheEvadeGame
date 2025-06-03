@@ -5,11 +5,11 @@ public class Shooter extends Entity {
     private int col;
     private ArrayList<Projectile> projectiles = new ArrayList<Projectile>();
 
-
     Shooter(int row, int col) {
         super(row, col);
     }
 
+    //Getters + Setters
     public void setRow(int row){
         this.row = row;
     }
@@ -20,15 +20,18 @@ public class Shooter extends Entity {
         return projectiles;
     }
 
+
+    //Actually making a projectile object to implement onto the screen
     public void shoot(){
         Projectile newShot = new Projectile(row * 30 + 5,col * 30 + 5);
         projectiles.add(newShot);
     }
 
+
+    //Entity movement, but reworked to fit the shooter and renamed
     public int[][] shooterMovement(int[][] field){
 
         shoot();
-
 
         int choice = (int) (Math.random() * 5 + 1);
 

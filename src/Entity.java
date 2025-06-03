@@ -7,6 +7,7 @@ public class Entity {
         this.col = col;
     }
 
+    //Getters + Setters
     public int getRow() {
         return row;
     }
@@ -14,6 +15,8 @@ public class Entity {
         this.row = row;
     }
 
+
+    //Entity movement with conditions where to go given a situation if needed
     public int[][] entityMovement(int[][] field){
         int choice = (int) (Math.random() * 5 + 1);
 

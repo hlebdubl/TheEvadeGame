@@ -98,7 +98,6 @@ public class Obstacles {
         }
     }
 
-
     //GETTERS AND SETTERS
     public int[][] exportField() {
         return layout;

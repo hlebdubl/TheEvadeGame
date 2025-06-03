@@ -12,6 +12,8 @@ public class Projectile {
         this.x = x;
         this.y = y;
     }
+
+    //Having its location updated
     public void projectileMovement(int tarX, int tarY){
         angle = Math.atan2(tarY - y, tarX - x);
         vx = SPEED * Math.cos(angle);

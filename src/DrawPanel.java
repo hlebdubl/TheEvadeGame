@@ -344,8 +344,8 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
         int keyCode = e.getKeyCode();
         //inputs for the game screen, so you can move around and all that
         if(inGame){
-            //go up
 
+            //go up
             if(keyCode == KeyEvent.VK_W) {
                 if(playField[obstacle.getPlayerRow() - 1 ][obstacle.getPlayerCol()] == 4){
                     score += 15;
@@ -411,7 +411,6 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
                 else if(playField[obstacle.getPlayerRow()][obstacle.getPlayerCol() - 1] == 6){
                     reset();
                 }
-
             }
             //go right
             else if (keyCode == KeyEvent.VK_D && obstacle.getPlayerCol() != 59) {
@@ -514,7 +513,6 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
                 else if(playField[obstacle.getPlayerRow() - 2 ][obstacle.getPlayerCol()] == 6){
                     reset();
                 }
-
             }
             //dash left
             else if (keyCode == KeyEvent.VK_E && obstacle.getPlayerCol() > 1) {
@@ -550,7 +548,6 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
                 else if(playField[obstacle.getPlayerRow()][obstacle.getPlayerCol() - 2] == 6){
                     reset();
                 }
-
             }
             //dash right
             else if (keyCode == KeyEvent.VK_Z && obstacle.getPlayerCol() < 58) {
@@ -588,15 +585,12 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
                 }
 
             }
-            //generates new lines once the player steps on row 20
             //Ensuring score stays at 0 or above
             if(score < 0){
                 score = 0;
                 play.nullScore();
             }
-
-
-
+            //generates new lines once the player steps on row 20
             if(obstacle.getPlayerRow() == 20){
                 obstacle.changeField(playField);
                 obstacle.generateMore();
