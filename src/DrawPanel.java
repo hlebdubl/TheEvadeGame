@@ -346,6 +346,10 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
         //inputs for the game screen, so you can move around and all that
         if(inGame){
 
+            //in game movement, follows key binds and moves where needed as it updates the field and score
+            //if player dies, game gets reset
+            //for every valid move, 'moved' becomes true so the entities can also move
+
             //go up
             if(keyCode == KeyEvent.VK_W) {
                 if(playField[obstacle.getPlayerRow() - 1 ][obstacle.getPlayerCol()] == 4){
@@ -466,13 +470,14 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
             //Entity + Shooter movement
             if(moved){
                 for(int i  = 0; i < 6; i ++) {
-
+                    //movement for shooter only
                     if( i == 0){
                         shoot.shooterMovement(playField);
                         projectiles = shoot.updateProjectiles();
                     }
 
                     playField = enemies.get(i).entityMovement(playField);
+                    //makes the game pause for a bit if the player dies
                     if(playField[obstacle.getPlayerRow()][obstacle.getPlayerCol()] == 6){
                         try {
                             Thread.sleep(1000);
@@ -481,8 +486,10 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
                         }
                         reset();
                     }
+                    //second move for the entities
                     playField = enemies.get(i).entityMovement(playField);
                 }
+                //resets back to default
                 moved = false;
             }
 
@@ -518,6 +525,9 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
     public void keyReleased(KeyEvent e) {
     }
 
+
+    //resets the game to the starting position, can happen either voluntarily if the player clicks the button
+    //or if the player dies and therefor the game gets reset for them
     public void reset(){
 
         obstacle = new Obstacles();
