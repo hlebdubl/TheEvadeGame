@@ -357,7 +357,13 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
                     playField[obstacle.getPlayerRow()][obstacle.getPlayerCol()] = 4;
                     obstacle.setPlayerRow(obstacle.getPlayerRow() - 1);
 
-                    for(int i  = 0; i < 7; i ++) {
+                    for(int i  = 0; i < 6; i ++) {
+
+                        if( i < 2){
+                            shoot.entityMovement(playField);
+                            projectiles = shoot.updateProjectiles();
+                        }
+
                         playField = enemies.get(i).entityMovement(playField);
                         if(playField[obstacle.getPlayerRow()][obstacle.getPlayerCol()] == 6){
                             try {
@@ -383,7 +389,13 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
                     playField[obstacle.getPlayerRow()][obstacle.getPlayerCol()] = 4;
                     obstacle.setPlayerCol(obstacle.getPlayerCol() - 1);
 
-                    for(int i  = 0; i < 7; i ++) {
+                    for(int i  = 0; i < 6; i ++) {
+
+                        if( i < 2){
+                            shoot.entityMovement(playField);
+                            projectiles = shoot.updateProjectiles();
+                        }
+
                         playField = enemies.get(i).entityMovement(playField);
                         if(playField[obstacle.getPlayerRow()][obstacle.getPlayerCol()] == 6){
                             try {
@@ -409,7 +421,13 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
                     playField[obstacle.getPlayerRow()][obstacle.getPlayerCol()] = 4;
                     obstacle.setPlayerCol(obstacle.getPlayerCol() + 1);
 
-                    for(int i  = 0; i < 7; i ++) {
+                    for(int i  = 0; i < 6; i ++) {
+
+                        if( i < 2){
+                            shoot.entityMovement(playField);
+                            projectiles = shoot.updateProjectiles();
+                        }
+
                         playField = enemies.get(i).entityMovement(playField);
                         if(playField[obstacle.getPlayerRow()][obstacle.getPlayerCol()] == 6){
                             try {
@@ -439,7 +457,13 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
                     playField[obstacle.getPlayerRow()][obstacle.getPlayerCol()] = 4;
                     obstacle.setPlayerRow(obstacle.getPlayerRow() + 1);
 
-                    for(int i  = 0; i < 7; i ++) {
+                    for(int i  = 0; i < 6; i ++) {
+
+                        if( i < 2){
+                            shoot.entityMovement(playField);
+                            projectiles = shoot.updateProjectiles();
+                        }
+
                         playField = enemies.get(i).entityMovement(playField);
                         if(playField[obstacle.getPlayerRow()][obstacle.getPlayerCol()] == 6){
                             try {
@@ -468,7 +492,13 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
 
                     play.compareScore();
 
-                    for(int i  = 0; i < 7; i ++) {
+                    for(int i  = 0; i < 6; i ++) {
+
+                        if( i < 2){
+                            shoot.entityMovement(playField);
+                            projectiles = shoot.updateProjectiles();
+                        }
+
                         playField = enemies.get(i).entityMovement(playField);
                         if(playField[obstacle.getPlayerRow()][obstacle.getPlayerCol()] == 6){
                             try {
@@ -498,7 +528,13 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
 
                     play.compareScore();
 
-                    for(int i  = 0; i < 7; i ++) {
+                    for(int i  = 0; i < 6; i ++) {
+
+                        if( i < 2){
+                            shoot.entityMovement(playField);
+                            projectiles = shoot.updateProjectiles();
+                        }
+
                         playField = enemies.get(i).entityMovement(playField);
                         if(playField[obstacle.getPlayerRow()][obstacle.getPlayerCol()] == 6){
                             try {
@@ -528,7 +564,13 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
 
                     play.compareScore();
 
-                    for(int i  = 0; i < 7; i ++) {
+                    for(int i  = 0; i < 6; i ++) {
+
+                        if( i < 2){
+                            shoot.entityMovement(playField);
+                            projectiles = shoot.updateProjectiles();
+                        }
+
                         playField = enemies.get(i).entityMovement(playField);
                         if(playField[obstacle.getPlayerRow()][obstacle.getPlayerCol()] == 6){
                             try {
@@ -553,7 +595,7 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
                 play.nullScore();
             }
 
-            projectiles = shoot.updateProjectiles();
+
 
             if(obstacle.getPlayerRow() == 20){
                 obstacle.changeField(playField);
