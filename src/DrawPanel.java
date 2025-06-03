@@ -22,7 +22,7 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
     private String name;
     private Shooter shoot;
     private ArrayList<Entity> enemies = new ArrayList<Entity>();
-    private ArrayList<Projectile> projectiles = new ArrayList<Projectile>();
+    private ArrayList projectiles = new ArrayList<Projectile>();
 
     public DrawPanel() {
         this.addMouseListener(this);
@@ -553,7 +553,7 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
                 play.nullScore();
             }
 
-            shoot.updateProjectiles();
+            projectiles = shoot.updateProjectiles();
 
             if(obstacle.getPlayerRow() == 20){
                 obstacle.changeField(playField);
