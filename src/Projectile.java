@@ -14,13 +14,13 @@ public class Projectile {
         this.y = y;
     }
 
+    //getters + setters
     public void increaseTurns(){
         turn++;
     }
     public int getTurns(){
         return turn;
     }
-
     public int getX() {
         return (int) x;
     }

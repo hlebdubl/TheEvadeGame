@@ -26,6 +26,8 @@ public class Shooter extends Entity {
         Projectile newShot = new Projectile(row * 30 + 5,col * 30 + 55);
         projectiles.add(newShot);
 
+        //increases the amount of turns a projectile was alive for, and if that number
+        //exceeds 3, the projectile gets removed from the list
         for(int i = 0; i < projectiles.size(); i ++){
             projectiles.get(i).increaseTurns();
 
