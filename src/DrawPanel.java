@@ -23,7 +23,7 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
     private String name;
     private Shooter shoot;
     private ArrayList<Entity> enemies = new ArrayList<Entity>();
-    private ArrayList projectiles = new ArrayList<Projectile>();
+    private ArrayList<Projectile> projectiles = new ArrayList<Projectile>();
 
     public DrawPanel() {
         this.addMouseListener(this);
@@ -164,6 +164,11 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
                 }
                 x += 30;
                 y = 1;
+
+                for(int i = 0; i < projectiles.size(); i ++){
+                    g.drawOval(projectiles.get(i).getX(), projectiles.get(i).getY(), 5,5);
+                    projectiles.get(i).projectileMovement(shoot.getRow(), shoot.getCol());
+                }
             }
         }
         //draws out the tips screen

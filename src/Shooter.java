@@ -16,6 +16,9 @@ public class Shooter extends Entity {
     public int getRow(){
         return row;
     }
+    public int getCol(){
+        return col;
+    }
     public ArrayList<Projectile> updateProjectiles(){
         return projectiles;
     }
@@ -29,7 +32,7 @@ public class Shooter extends Entity {
 
 
     //Entity movement, but reworked to fit the shooter and renamed
-    public int[][] shooterMovement(int[][] field){
+    public void shooterMovement(int[][] field){
 
         shoot();
 
@@ -109,6 +112,5 @@ public class Shooter extends Entity {
                 field[row][col] = 8;
             }
         }
-        return field;
     }
 }

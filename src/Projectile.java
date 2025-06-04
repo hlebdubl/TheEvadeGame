@@ -13,6 +13,13 @@ public class Projectile {
         this.y = y;
     }
 
+    public int getX() {
+        return (int) x;
+    }
+    public int getY() {
+        return (int) y;
+    }
+
     //Having its location updated
     public void projectileMovement(int tarX, int tarY){
         angle = Math.atan2(tarY - y, tarX - x);
