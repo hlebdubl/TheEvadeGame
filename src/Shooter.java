@@ -25,6 +25,15 @@ public class Shooter extends Entity {
     public void shoot(){
         Projectile newShot = new Projectile(row * 30 + 5,col * 30 + 55);
         projectiles.add(newShot);
+
+        for(int i = 0; i < projectiles.size(); i ++){
+            projectiles.get(i).increaseTurns();
+
+            if(projectiles.get(i).getTurns() > 3){
+                projectiles.remove(i);
+                i--;
+            }
+        }
     }
 
 

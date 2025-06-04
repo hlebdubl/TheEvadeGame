@@ -7,10 +7,18 @@ public class Projectile {
     private double vy;
     private final double SPEED = 10;
     private double angle;
+    int turn = 0;
 
     public Projectile(int x, int y) {
         this.x = x;
         this.y = y;
+    }
+
+    public void increaseTurns(){
+        turn++;
+    }
+    public int getTurns(){
+        return turn;
     }
 
     public int getX() {
