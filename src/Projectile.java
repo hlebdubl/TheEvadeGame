@@ -34,7 +34,6 @@ public class Projectile {
         vx = SPEED * Math.cos(angle);
         vy = SPEED * Math.sin(angle);
 
-
         double deltaTime = 0.1;
         x += vx * deltaTime;
         y += vy * deltaTime;
