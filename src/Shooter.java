@@ -16,9 +16,6 @@ public class Shooter extends Entity {
     public int getRow(){
         return row;
     }
-    public int getCol(){
-        return col;
-    }
     public ArrayList<Projectile> updateProjectiles(){
         return projectiles;
     }
