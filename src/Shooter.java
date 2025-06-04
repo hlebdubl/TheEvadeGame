@@ -26,7 +26,7 @@ public class Shooter extends Entity {
 
     //Actually making a projectile object to implement onto the screen
     public void shoot(){
-        Projectile newShot = new Projectile(row * 30 + 5,col * 30 + 5);
+        Projectile newShot = new Projectile(row * 30 + 5,col * 30 + 55);
         projectiles.add(newShot);
     }
 
