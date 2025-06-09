@@ -23,7 +23,7 @@ public class Shooter extends Entity {
 
     //Actually making a projectile object to implement onto the screen
     public void shoot(){
-        Projectile newShot = new Projectile(row * 30 + 5,col * 30 + 55);
+        Projectile newShot = new Projectile(col * 30 + 55, row * 30 + 5);
         projectiles.add(newShot);
 
         //increases the amount of turns a projectile was alive for, and if that number
