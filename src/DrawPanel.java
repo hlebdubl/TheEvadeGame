@@ -166,8 +166,9 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
                 y = 1;
 
                 for(int i = 0; i < projectiles.size(); i ++){
-                    g.drawOval(projectiles.get(i).getX(), projectiles.get(i).getY(), 5,5);
-                    projectiles.get(i).projectileMovement(obstacle.getPlayerCol() * 30 + 65, obstacle.getPlayerRow() * 30 + 5) ;
+                    g.drawOval(projectiles.get(i).getX(), projectiles.get(i).getY(), 9,9);
+                    g.fillOval(projectiles.get(i).getX(), projectiles.get(i).getY(), 9, 9);
+                    projectiles.get(i).projectileMovement(obstacle.getPlayerCol() * 30 + 65, obstacle.getPlayerRow() * 30 + 5);
                 }
             }
         }
@@ -288,6 +289,7 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
 
         }
     }
+
 
     public void mouseClicked(MouseEvent e) {
         int x = e.getX();
