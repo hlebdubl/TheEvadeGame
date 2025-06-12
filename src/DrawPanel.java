@@ -210,6 +210,9 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
             g.drawRect(500,500,200,125);
             g.drawString("Tip 10: Don't touch the entities?!", 510,550);
 
+            g.drawRect(400,700,200,125);
+            g.drawString("Move fast, don't get caught", 425, 750 );
+
             g.drawRect(700,650,175,125);
             g.drawString("Tip Final: Go up!", 725,700);
 

@@ -30,13 +30,16 @@ public class Projectile {
 
     //Having its location updated
     public void projectileMovement(int tarX, int tarY){
+
         angle = Math.atan2(tarY - y, tarX - x);
         vx = Math.cos(angle);
         vy = Math.sin(angle);
 
         double deltaTime = .1;
-        x += vx * deltaTime;
-        y += vy * deltaTime;
+
+
+        x += ((double) 1 /3) * vx * deltaTime;
+        y += ((double) 1 /3) * vy * deltaTime;
     }
 
 }
