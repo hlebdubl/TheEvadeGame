@@ -35,7 +35,7 @@ public class Projectile {
         vx = Math.cos(angle);
         vy = Math.sin(angle);
 
-        double deltaTime = .1;
+        double deltaTime = .09;
 
 
         x += ((double) 1 /3) * vx * deltaTime;

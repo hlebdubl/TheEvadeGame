@@ -19,6 +19,9 @@ public class Shooter extends Entity {
     public ArrayList<Projectile> updateProjectiles(){
         return projectiles;
     }
+    public void resetProj(){
+        projectiles.removeAll(projectiles);
+    }
 
 
     //Actually making a projectile object to implement onto the screen
@@ -31,7 +34,7 @@ public class Shooter extends Entity {
         for(int i = 0; i < projectiles.size(); i ++){
             projectiles.get(i).increaseTurns();
 
-            if(projectiles.get(i).getTurns() > 3){
+            if(projectiles.get(i).getTurns() > 6){
                 projectiles.remove(i);
                 i--;
             }

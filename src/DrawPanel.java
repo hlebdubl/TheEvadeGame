@@ -6,6 +6,7 @@ import java.awt.event.MouseEvent;
 import javax.swing.JPanel;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 
 
 public class DrawPanel extends JPanel implements MouseListener, KeyListener {
@@ -552,5 +553,8 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
         playField = obstacle.exportField();
         enemies = obstacle.importEntities();
         shoot = obstacle.getShoot();
+        shoot.resetProj();
+        projectiles = shoot.updateProjectiles();
+
     }
 }
