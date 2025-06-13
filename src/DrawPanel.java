@@ -44,6 +44,7 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
 
     }
 
+    //getter
     public static Obstacles getObstacle() {
         return obstacle;
     }
@@ -170,6 +171,10 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
                 x += 30;
                 y = 1;
 
+
+                //check where on the map all the projectiles are
+                //and resets the game if the projectiles are with the player
+                //plus draws them
                 for(int i = 0; i < projectiles.size(); i ++){
                     g.drawOval(projectiles.get(i).getX(), projectiles.get(i).getY(), 9,9);
                     g.fillOval(projectiles.get(i).getX(), projectiles.get(i).getY(), 9, 9);
@@ -300,6 +305,9 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
             g.drawString("YOURSELF", 855, 700);
 
         }
+
+        //checks where on the map the projectiles are and
+        //removes them from the arrayList here and with the shooter if needed
         for(int i = 0; i < projectiles.size(); i ++){
             if(projectiles.get(i).getX() + 10 >= projectiles.get(i).getTARX() && projectiles.get(i).getY() + 5 >= projectiles.get(i).getTARY()){
                 projectiles.remove(i);
@@ -527,6 +535,7 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
                 play.nullScore();
             }
             //generates new lines once the player steps on row 20
+            //plus now updates the projectiles to fit in
             if(obstacle.getPlayerRow() == 20){
                 obstacle.changeField(playField);
                 for(int i = 0; i < projectiles.size(); i ++){

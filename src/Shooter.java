@@ -23,6 +23,7 @@ public class Shooter extends Entity {
         this.projectiles = projectiles;
     }
 
+    //resets the projectile arrayList to have nothing in it
     public void resetProj(){
         projectiles.removeAll(projectiles);
     }
@@ -38,6 +39,7 @@ public class Shooter extends Entity {
         for(int i = 0; i < projectiles.size(); i ++){
             projectiles.get(i).increaseTurns();
 
+            //limit of 10 projectiles at all times, oldest one has to get deleted to generate new ones
             if(projectiles.get(i).getTurns() > 10){
                 projectiles.remove(i);
                 i--;
