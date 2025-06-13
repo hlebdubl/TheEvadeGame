@@ -25,8 +25,8 @@ public class Shooter extends Entity {
 
 
     //Actually making a projectile object to implement onto the screen
-    public void shoot(){
-        Projectile newShot = new Projectile(col * 30 + 55, row * 30 + 5);
+    public void shoot(int tarX, int tarY){
+        Projectile newShot = new Projectile(col * 30 + 55, row * 30 + 5 , tarX, tarY);
         projectiles.add(newShot);
 
         //increases the amount of turns a projectile was alive for, and if that number
@@ -43,9 +43,9 @@ public class Shooter extends Entity {
 
 
     //Entity movement, but reworked to fit the shooter and renamed
-    public void shooterMovement(int[][] field){
+    public void shooterMovement(int[][] field, int tarX, int tarY){
 
-        shoot();
+        shoot(tarX, tarY);
 
         int choice = (int) (Math.random() * 5 + 1);
 

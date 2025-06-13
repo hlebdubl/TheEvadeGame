@@ -5,13 +5,18 @@ public class Projectile {
     private double y;
     private double vx;
     private double vy;
+    private final int TARX;
+    private final int TARY;
     private final double SPEED = 10;
     private double angle;
     int turn = 0;
 
-    public Projectile(int x, int y) {
+    public Projectile(int x, int y, int tarX, int tarY) {
         this.x = x;
         this.y = y;
+
+        this.TARX = tarX;
+        this.TARY = tarY;
     }
 
     //getters + setters
@@ -29,19 +34,19 @@ public class Projectile {
     }
 
     //Having its location updated
-    public int projectileMovement(int tarX, int tarY){
+    public int projectileMovement(){
 
-        angle = Math.atan2(tarY - y, tarX - x);
+        angle = Math.atan2(TARY - y, TARX - x);
         vx = Math.cos(angle);
         vy = Math.sin(angle);
 
-        double deltaTime = .09;
+        double deltaTime = .06;
 
 
         x += ((double) 1 /3) * vx * deltaTime;
         y += ((double) 1 /3) * vy * deltaTime;
 
-        if(x >= tarX && y >= tarY){
+        if(x >= TARX && y >= TARY){
             return 1;
         }
 
