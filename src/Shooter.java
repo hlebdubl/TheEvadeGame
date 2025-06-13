@@ -34,7 +34,7 @@ public class Shooter extends Entity {
         for(int i = 0; i < projectiles.size(); i ++){
             projectiles.get(i).increaseTurns();
 
-            if(projectiles.get(i).getTurns() > 6){
+            if(projectiles.get(i).getTurns() > 10){
                 projectiles.remove(i);
                 i--;
             }

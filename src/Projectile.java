@@ -10,6 +10,7 @@ public class Projectile {
     private final double SPEED = 10;
     private double angle;
     int turn = 0;
+    private Obstacles obstacles = DrawPanel.getObstacle();
 
     public Projectile(int x, int y, int tarX, int tarY) {
         this.x = x;
@@ -17,6 +18,8 @@ public class Projectile {
 
         this.TARX = tarX;
         this.TARY = tarY;
+
+
     }
 
     //getters + setters
@@ -40,13 +43,13 @@ public class Projectile {
         vx = Math.cos(angle);
         vy = Math.sin(angle);
 
-        double deltaTime = .06;
+        double deltaTime = .05;
 
 
         x += ((double) 1 /3) * vx * deltaTime;
         y += ((double) 1 /3) * vy * deltaTime;
 
-        if(x >= TARX && y >= TARY){
+        if(x >= obstacles.getPlayerCol() * 30 + 55 && y >= obstacles.getPlayerRow() * 30){
             return 1;
         }
 

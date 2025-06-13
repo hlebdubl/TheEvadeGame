@@ -19,7 +19,7 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
     private boolean moved = false;
     private int[][] playField;
     private Player play;
-    private Obstacles obstacle;
+    private static Obstacles obstacle;
     private int score;
     private String name;
     private Shooter shoot;
@@ -42,6 +42,10 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
         enemies = obstacle.importEntities();
         shoot = obstacle.getShoot();
 
+    }
+
+    public static Obstacles getObstacle() {
+        return obstacle;
     }
 
     protected void paintComponent(Graphics g) {
@@ -487,7 +491,7 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
                 for(int i  = 0; i < 6; i ++) {
                     //movement for shooter only
                     if( i == 0){
-                        shoot.shooterMovement(playField, obstacle.getPlayerCol() * 30, obstacle.getPlayerRow() * 30);
+                        shoot.shooterMovement(playField, obstacle.getPlayerCol() * 30 + 65, obstacle.getPlayerRow() * 30 + 5);
                         projectiles = shoot.updateProjectiles();
                     }
 
