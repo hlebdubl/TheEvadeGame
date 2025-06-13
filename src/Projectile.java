@@ -5,8 +5,8 @@ public class Projectile {
     private double y;
     private double vx;
     private double vy;
-    private final int TARX;
-    private final int TARY;
+    private int tarX;
+    private int tarY;
     private final double SPEED = 10;
     private double angle;
     int turn = 0;
@@ -16,8 +16,8 @@ public class Projectile {
         this.x = x;
         this.y = y;
 
-        this.TARX = tarX;
-        this.TARY = tarY;
+        this.tarX = tarX;
+        this.tarY = tarY;
 
 
     }
@@ -36,16 +36,21 @@ public class Projectile {
         return (int) y;
     }
     public int getTARX() {
-        return TARX;
+        return tarX;
     }
     public int getTARY() {
-        return TARY;
+        return tarY;
+    }
+
+    public void setYs() {
+        y += 30;
+        tarY += 30;
     }
 
     //Having its location updated
     public int projectileMovement(){
 
-        angle = Math.atan2(TARY - y, TARX - x);
+        angle = Math.atan2(tarY - y, tarX - x);
         vx = Math.cos(angle);
         vy = Math.sin(angle);
 

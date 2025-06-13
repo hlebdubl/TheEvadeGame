@@ -301,7 +301,11 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
 
         }
         for(int i = 0; i < projectiles.size(); i ++){
-            if(projectiles.get(i).getX() + 30 >= projectiles.get(i).getTARX() && projectiles.get(i).getY() + 5 >= projectiles.get(i).getTARY()){
+            if(projectiles.get(i).getX() >= projectiles.get(i).getTARX() && projectiles.get(i).getY() + 5 >= projectiles.get(i).getTARY()){
+                projectiles.remove(i);
+                i--;
+            }
+            else if(projectiles.get(i).getX() >= 2000  || projectiles.get(i).getY() >= 900){
                 projectiles.remove(i);
                 i--;
             }
@@ -525,12 +529,21 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
             //generates new lines once the player steps on row 20
             if(obstacle.getPlayerRow() == 20){
                 obstacle.changeField(playField);
+                for(int i = 0; i < projectiles.size(); i ++){
+                        projectiles.get(i).setYs();
+                    }
+                    shoot.setProjectiles(projectiles);
                 obstacle.generateMore();
             }
             //in case dash happens onto row 19
             //and two extra rows need to be generated
             else if(obstacle.getPlayerRow() == 19){
                 obstacle.changeField(playField);
+                for(int i = 0; i < projectiles.size(); i ++){
+                    projectiles.get(i).setYs();
+                    projectiles.get(i).setYs();
+                }
+                shoot.setProjectiles(projectiles);
                 obstacle.generateMore();
                 obstacle.generateMore();
             }
