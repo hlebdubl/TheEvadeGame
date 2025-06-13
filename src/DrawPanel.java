@@ -300,6 +300,13 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
             g.drawString("YOURSELF", 855, 700);
 
         }
+        for(int i = 0; i < projectiles.size(); i ++){
+            if(projectiles.get(i).getX() + 30 >= projectiles.get(i).getTARX() && projectiles.get(i).getY() + 5 >= projectiles.get(i).getTARY()){
+                projectiles.remove(i);
+                i--;
+            }
+            shoot.setProjectiles(projectiles);
+        }
     }
 
 
@@ -360,19 +367,9 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
 
     //CHECKS FOR WHAT KEY IS PRESSED TO MOVE OR TYPE NAME
     public void keyPressed(KeyEvent e) {
-
         int keyCode = e.getKeyCode();
         //inputs for the game screen, so you can move around and all that
         if(inGame){
-            for(int i = 0; i < projectiles.size(); i ++){
-                if(projectiles.get(i).getX() == projectiles.get(i).getTARX() && projectiles.get(i).getY() == projectiles.get(i).getTARY()){
-                    projectiles.remove(i);
-                    i--;
-                }
-                shoot.setProjectiles(projectiles);
-            }
-
-
             //in game movement, follows key binds and moves where needed as it updates the field and score
             //if player dies, game gets reset
             //for every valid move, 'moved' becomes true so the entities can also move
