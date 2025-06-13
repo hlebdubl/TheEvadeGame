@@ -19,6 +19,10 @@ public class Shooter extends Entity {
     public ArrayList<Projectile> updateProjectiles(){
         return projectiles;
     }
+    public void setProjectiles(ArrayList<Projectile> projectiles) {
+        this.projectiles = projectiles;
+    }
+
     public void resetProj(){
         projectiles.removeAll(projectiles);
     }

@@ -35,6 +35,12 @@ public class Projectile {
     public int getY() {
         return (int) y;
     }
+    public int getTARX() {
+        return TARX;
+    }
+    public int getTARY() {
+        return TARY;
+    }
 
     //Having its location updated
     public int projectileMovement(){
@@ -49,7 +55,7 @@ public class Projectile {
         x += ((double) 1 /3) * vx * deltaTime;
         y += ((double) 1 /3) * vy * deltaTime;
 
-        if(x >= obstacles.getPlayerCol() * 30 + 55 && y >= obstacles.getPlayerRow() * 30){
+        if((x >= obstacles.getPlayerCol() * 30 + 55 && y >= obstacles.getPlayerRow() * 30) && (x <= obstacles.getPlayerCol() * 30 + 85  && y <= obstacles.getPlayerRow() * 31)){
             return 1;
         }
 

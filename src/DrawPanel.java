@@ -364,6 +364,14 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
         int keyCode = e.getKeyCode();
         //inputs for the game screen, so you can move around and all that
         if(inGame){
+            for(int i = 0; i < projectiles.size(); i ++){
+                if(projectiles.get(i).getX() == projectiles.get(i).getTARX() && projectiles.get(i).getY() == projectiles.get(i).getTARY()){
+                    projectiles.remove(i);
+                    i--;
+                }
+                shoot.setProjectiles(projectiles);
+            }
+
 
             //in game movement, follows key binds and moves where needed as it updates the field and score
             //if player dies, game gets reset
