@@ -301,7 +301,7 @@ public class DrawPanel extends JPanel implements MouseListener, KeyListener {
 
         }
         for(int i = 0; i < projectiles.size(); i ++){
-            if(projectiles.get(i).getX() >= projectiles.get(i).getTARX() && projectiles.get(i).getY() + 5 >= projectiles.get(i).getTARY()){
+            if(projectiles.get(i).getX() + 10 >= projectiles.get(i).getTARX() && projectiles.get(i).getY() + 5 >= projectiles.get(i).getTARY()){
                 projectiles.remove(i);
                 i--;
             }
